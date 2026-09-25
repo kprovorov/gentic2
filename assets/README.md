@@ -56,10 +56,10 @@ the central two thirds of a 288dp canvas, so the Icon Composer exports cannot be
 their rounded-square silhouette gets framed again and the wordmark is cropped. The Android artwork
 is instead rendered from the same Icon Composer SVG sources by `vp run icons:export:android`:
 
-- `apps/mobile/assets/android-icon-foreground.png`: the shared transparent wordmark, sized to stay
-  inside the safe zone
+- `apps/mobile/assets/android-icon-foreground.png` and `-prod.png`: the transparent wordmark (white
+  for dev and nightly, dark green for production), sized to stay inside the safe zone
 - `apps/mobile/assets/android-icon-background-dev.png` and `-nightly.png`: full-bleed variant
-  artwork (blueprint grid and annotations; night sky and clouds). Production uses a solid color.
+  artwork (blueprint grid and annotations; night sky and clouds). Production uses a solid lime color.
 - `apps/mobile/assets/android-splash-icon-*.png`: the two layers composed into one 288dp image, so
   the splash mask reproduces the launcher icon's framing.
 

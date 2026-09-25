@@ -10,21 +10,21 @@
 
   <g stroke="#DDF7FF" stroke-linecap="round" stroke-linejoin="round">
     <g opacity="0.9" stroke-width="0.44">
-      <path d="M12.85 31V25.6M65.94 31V25.6M71.61 31V25.6M115.15 31V25.6"/>
-      <path d="M14.25 27.2H64.54" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)"/>
-      <path d="M73.01 27.2H113.75" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)"/>
-      <path d="M12.85 97.3V103M115.15 97.3V103"/>
-      <path d="M14.25 101.1H113.75" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)"/>
-      <path d="M10.2 36.01H6.1M10.2 65.00H6.1M10.2 93.99H6.1"/>
-      <path d="M7.9 37.41V63.60" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)"/>
-      <path d="M7.9 66.40V92.59" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)"/>
+      <path d="M13.06 31V25.6M70.60 31V25.6M74.53 31V25.6M114.94 31V25.6"/>
+      <path d="M14.46 27.2H69.20" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)"/>
+      <path d="M75.93 27.2H113.54" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)"/>
+      <path d="M13.06 97.3V103M114.94 97.3V103"/>
+      <path d="M14.46 101.1H113.54" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)"/>
+      <path d="M10.2 36.13H6.1M10.2 65.00H6.1M10.2 93.87H6.1"/>
+      <path d="M7.9 37.53V63.60" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)"/>
+      <path d="M7.9 66.40V92.47" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)"/>
     </g>
 
     <g opacity="0.58" stroke-width="0.34">
-      <path d="M9.85 34.81H118.15M9.85 95.19H118.15M65.94 34.01V95.99M71.61 34.01V95.99" stroke-dasharray="1.6 1.6"/>
-      <path d="M9.85 65.00H68.94M39.40 32.01V97.99M93.38 32.01V97.99" stroke-dasharray="1.2 2"/>
-      <circle cx="39.40" cy="65.00" r="28.99"/>
-      <circle cx="39.40" cy="65.00" r="1.1"/>
+      <path d="M10.06 34.93H117.94M10.06 95.07H117.94M70.60 34.13V95.87M74.53 34.13V95.87" stroke-dasharray="1.6 1.6"/>
+      <path d="M10.06 65.00H73.60M41.83 32.13V97.87M94.74 32.13V97.87" stroke-dasharray="1.2 2"/>
+      <circle cx="41.83" cy="65.00" r="28.87"/>
+      <circle cx="41.83" cy="65.00" r="1.1"/>
     </g>
 
     <g opacity="0.76" stroke-width="0.4">
