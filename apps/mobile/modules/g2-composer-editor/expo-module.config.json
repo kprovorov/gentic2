@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android"],
+  "apple": {
+    "modules": ["G2ComposerEditorModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.g2composereditor.G2ComposerEditorModule"]
+  }
+}

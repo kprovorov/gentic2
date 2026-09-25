@@ -62,7 +62,7 @@ const makeEnvironmentLayer = (
       Layer.mergeAll(
         NodeServices.layer,
         DesktopConfig.layerTest({
-          T3CODE_HOME: baseDir,
+          GENTIC2_HOME: baseDir,
           VITE_DEV_SERVER_URL: isDevelopment ? "http://127.0.0.1:5733" : undefined,
           ...env,
         }),
@@ -141,7 +141,7 @@ describe("DesktopObservability", () => {
     Effect.gen(function* () {
       const fileSystem = yield* FileSystem.FileSystem;
       const baseDir = yield* fileSystem.makeTempDirectoryScoped({
-        prefix: "t3-desktop-observability-test-",
+        prefix: "g2-desktop-observability-test-",
       });
       const environmentLayer = makeEnvironmentLayer(baseDir);
       const tracePath = yield* Effect.gen(function* () {
@@ -190,7 +190,7 @@ describe("DesktopObservability", () => {
     Effect.gen(function* () {
       const fileSystem = yield* FileSystem.FileSystem;
       const baseDir = yield* fileSystem.makeTempDirectoryScoped({
-        prefix: "t3-desktop-backend-output-log-test-",
+        prefix: "g2-desktop-backend-output-log-test-",
       });
       const environmentLayer = makeEnvironmentLayer(baseDir, false);
       const logPath = yield* Effect.gen(function* () {
@@ -268,7 +268,7 @@ describe("DesktopObservability", () => {
     Effect.gen(function* () {
       const fileSystem = yield* FileSystem.FileSystem;
       const baseDir = yield* fileSystem.makeTempDirectoryScoped({
-        prefix: "t3-desktop-backend-output-snapshot-test-",
+        prefix: "g2-desktop-backend-output-snapshot-test-",
       });
       const environmentLayer = makeEnvironmentLayer(baseDir, false);
       const logPath = yield* Effect.gen(function* () {
@@ -308,7 +308,7 @@ describe("DesktopObservability", () => {
     Effect.gen(function* () {
       const fileSystem = yield* FileSystem.FileSystem;
       const baseDir = yield* fileSystem.makeTempDirectoryScoped({
-        prefix: "t3-desktop-backend-output-bound-test-",
+        prefix: "g2-desktop-backend-output-bound-test-",
       });
       const environmentLayer = makeEnvironmentLayer(baseDir, false);
       const logPath = yield* Effect.gen(function* () {
@@ -352,7 +352,7 @@ describe("DesktopObservability", () => {
     Effect.gen(function* () {
       const fileSystem = yield* FileSystem.FileSystem;
       const baseDir = yield* fileSystem.makeTempDirectoryScoped({
-        prefix: "t3-desktop-backend-output-chunks-test-",
+        prefix: "g2-desktop-backend-output-chunks-test-",
       });
       const environmentLayer = makeEnvironmentLayer(baseDir, false);
       const logPath = yield* Effect.gen(function* () {
@@ -387,11 +387,11 @@ describe("DesktopObservability", () => {
     return Effect.gen(function* () {
       const fileSystem = yield* FileSystem.FileSystem;
       const baseDir = yield* fileSystem.makeTempDirectoryScoped({
-        prefix: "t3-desktop-observability-test-",
+        prefix: "g2-desktop-observability-test-",
       });
       const environmentLayer = makeEnvironmentLayer(baseDir, true, {
-        T3CODE_OTLP_LOGS_URL: "https://collector.example.com/v1/logs",
-        T3CODE_OTLP_HEADERS: "x-scope=desktop",
+        GENTIC2_OTLP_LOGS_URL: "https://collector.example.com/v1/logs",
+        GENTIC2_OTLP_HEADERS: "x-scope=desktop",
       });
       const tracePath = yield* Effect.gen(function* () {
         const environment = yield* DesktopEnvironment.DesktopEnvironment;
@@ -433,10 +433,10 @@ describe("DesktopObservability", () => {
     return Effect.gen(function* () {
       const fileSystem = yield* FileSystem.FileSystem;
       const baseDir = yield* fileSystem.makeTempDirectoryScoped({
-        prefix: "t3-desktop-observability-test-",
+        prefix: "g2-desktop-observability-test-",
       });
       const environmentLayer = makeEnvironmentLayer(baseDir, true, {
-        T3CODE_OTLP_LOGS_URL: "https://collector.example.com/v1/logs",
+        GENTIC2_OTLP_LOGS_URL: "https://collector.example.com/v1/logs",
       });
 
       yield* Effect.scoped(
@@ -463,7 +463,7 @@ describe("DesktopObservability", () => {
     return Effect.gen(function* () {
       const fileSystem = yield* FileSystem.FileSystem;
       const baseDir = yield* fileSystem.makeTempDirectoryScoped({
-        prefix: "t3-desktop-observability-test-",
+        prefix: "g2-desktop-observability-test-",
       });
       const environmentLayer = makeEnvironmentLayer(baseDir);
       yield* writeObservabilitySettings(environmentLayer, {
@@ -504,7 +504,7 @@ describe("DesktopObservability", () => {
     return Effect.gen(function* () {
       const fileSystem = yield* FileSystem.FileSystem;
       const baseDir = yield* fileSystem.makeTempDirectoryScoped({
-        prefix: "t3-desktop-observability-test-",
+        prefix: "g2-desktop-observability-test-",
       });
 
       yield* Effect.scoped(
@@ -528,7 +528,7 @@ describe("DesktopObservability", () => {
     return Effect.gen(function* () {
       const fileSystem = yield* FileSystem.FileSystem;
       const baseDir = yield* fileSystem.makeTempDirectoryScoped({
-        prefix: "t3-desktop-observability-test-",
+        prefix: "g2-desktop-observability-test-",
       });
       const environmentLayer = makeEnvironmentLayer(baseDir);
       yield* writeObservabilitySettings(environmentLayer, {

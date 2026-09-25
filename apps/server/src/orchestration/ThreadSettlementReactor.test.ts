@@ -14,8 +14,8 @@ import {
   type PullRequestSummary,
   type ServerSettings,
   type ServerSettingsPatch,
-} from "@t3tools/contracts";
-import { applyServerSettingsPatch } from "@t3tools/shared/serverSettings";
+} from "@gentic2/contracts";
+import { applyServerSettingsPatch } from "@gentic2/shared/serverSettings";
 import { assert, describe, it } from "@effect/vitest";
 import * as Crypto from "effect/Crypto";
 import * as DateTime from "effect/DateTime";
@@ -1915,7 +1915,7 @@ describe("storage cleanup", () => {
           assert.strictEqual(yield* fs.exists(activeLog), true);
         }).pipe(
           Effect.provide(
-            ServerConfig.layerTest(process.cwd(), { prefix: "t3-storage-cleanup-" }).pipe(
+            ServerConfig.layerTest(process.cwd(), { prefix: "g2-storage-cleanup-" }).pipe(
               Layer.provideMerge(NodeServices.layer),
             ),
           ),

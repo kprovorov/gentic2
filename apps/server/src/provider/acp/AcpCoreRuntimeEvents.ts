@@ -10,7 +10,7 @@ import {
   type RuntimeRequestId,
   type ThreadId,
   type TurnId,
-} from "@t3tools/contracts";
+} from "@gentic2/contracts";
 
 import {
   type AcpPermissionRequest,

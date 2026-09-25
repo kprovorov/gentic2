@@ -2,8 +2,8 @@
  * otelEnvironment: the OpenTelemetry kill switch, shared by the server and the
  * desktop main process so both agree on what turns export off.
  *
- * `T3CODE_OTEL_SDK_DISABLED` is read first, so a machine that sets
- * `OTEL_SDK_DISABLED` for everything else can still opt T3 Code back in.
+ * `GENTIC2_OTEL_SDK_DISABLED` is read first, so a machine that sets
+ * `OTEL_SDK_DISABLED` for everything else can still opt Gentic2 back in.
  *
  * @module otelEnvironment
  */
@@ -64,8 +64,8 @@ const flag = (
   );
 
 // `Config.Boolean`'s literals, which effect does not export on their own.
-const T3CODE_TRUE = ["true", "yes", "on", "1", "y"];
-const T3CODE_FALSE = ["false", "no", "off", "0", "n"];
+const GENTIC2_TRUE = ["true", "yes", "on", "1", "y"];
+const GENTIC2_FALSE = ["false", "no", "off", "0", "n"];
 
 const RESOURCE_ATTRIBUTES = "OTEL_RESOURCE_ATTRIBUTES";
 
@@ -94,11 +94,11 @@ const resourceAttributes = Config.Record(
 );
 
 export const load: Effect.Effect<OtelEnvironment> = Config.all({
-  t3: flag(
-    "T3CODE_OTEL_SDK_DISABLED",
-    T3CODE_TRUE,
-    T3CODE_FALSE,
-    (value) => `T3CODE_OTEL_SDK_DISABLED=${value} is not a yes or a no and was ignored`,
+  g2: flag(
+    "GENTIC2_OTEL_SDK_DISABLED",
+    GENTIC2_TRUE,
+    GENTIC2_FALSE,
+    (value) => `GENTIC2_OTEL_SDK_DISABLED=${value} is not a yes or a no and was ignored`,
   ),
   // The specification: a boolean it defines is true "only by the
   // case-insensitive string `true`", implementations "MUST NOT" accept other
@@ -108,20 +108,20 @@ export const load: Effect.Effect<OtelEnvironment> = Config.all({
     ["true"],
     ["false"],
     (value) =>
-      `OTEL_SDK_DISABLED=${value} was read as false; the OpenTelemetry specification recognizes only the string true, so use OTEL_SDK_DISABLED=true or T3CODE_OTEL_SDK_DISABLED to say it any other way`,
+      `OTEL_SDK_DISABLED=${value} was read as false; the OpenTelemetry specification recognizes only the string true, so use OTEL_SDK_DISABLED=true or GENTIC2_OTEL_SDK_DISABLED to say it any other way`,
   ),
   resource: resourceAttributes,
 }).pipe(
-  Effect.map(({ t3, spec, resource }) => {
-    const disabled = t3.value ?? spec.value ?? false;
-    const warnings = [t3.warning, spec.warning, resource.warning].filter(
+  Effect.map(({ g2, spec, resource }) => {
+    const disabled = g2.value ?? spec.value ?? false;
+    const warnings = [g2.warning, spec.warning, resource.warning].filter(
       (warning) => warning !== undefined,
     );
     if (disabled) {
       warnings.push(
-        t3.value
-          ? "T3CODE_OTEL_SDK_DISABLED is set, so no telemetry is exported, whatever configured it"
-          : "OTEL_SDK_DISABLED is set, so no telemetry is exported, whatever configured it; set T3CODE_OTEL_SDK_DISABLED=false to export anyway",
+        g2.value
+          ? "GENTIC2_OTEL_SDK_DISABLED is set, so no telemetry is exported, whatever configured it"
+          : "OTEL_SDK_DISABLED is set, so no telemetry is exported, whatever configured it; set GENTIC2_OTEL_SDK_DISABLED=false to export anyway",
       );
     }
     return { disabled, warnings, resourceAttributes: resource.value };

@@ -1,11 +1,11 @@
-import { projectQuestionToolInput } from "@t3tools/shared/toolActivity";
+import { projectQuestionToolInput } from "@gentic2/shared/toolActivity";
 import type {
   OrchestrationEvent,
   OrchestrationThreadActivity,
   OrchestrationThreadDetailSnapshot,
-} from "@t3tools/contracts";
-import { isWorkspaceImagePreviewPath } from "@t3tools/shared/filePreview";
-import { extractJsonObject } from "@t3tools/shared/schemaJson";
+} from "@gentic2/contracts";
+import { isWorkspaceImagePreviewPath } from "@gentic2/shared/filePreview";
+import { extractJsonObject } from "@gentic2/shared/schemaJson";
 
 function asRecord(value: unknown): Record<string, unknown> | null {
   return value !== null && typeof value === "object" && !Array.isArray(value)
@@ -248,7 +248,7 @@ function projectPreviewToolMetadata(data: Record<string, unknown>, status: unkno
   const name = item ? `mcp__${item.server}__${item.tool}` : (data.toolName ?? data.tool);
   if (
     typeof name !== "string" ||
-    !/^(?:mcp__)?(?:t3-code|t3_code|t3code)_{1,2}preview_(?:open|navigate|status|snapshot|click|type|press|scroll|resize|set_appearance|evaluate|wait_for|recording_start|recording_stop)$/.test(
+    !/^(?:mcp__)?(?:gentic2|gentic2|gentic2)_{1,2}preview_(?:open|navigate|status|snapshot|click|type|press|scroll|resize|set_appearance|evaluate|wait_for|recording_start|recording_stop)$/.test(
       name,
     )
   )

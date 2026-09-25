@@ -2,14 +2,14 @@ import { useAtomValue } from "@effect/atom-react";
 import {
   type EnvironmentConnectionPhase,
   presentConnectionState,
-} from "@t3tools/client-runtime/connection";
+} from "@gentic2/client-runtime/connection";
 import {
   assetUrlStateFromResult,
   createAssetEnvironmentAtoms,
   createProjectFaviconUrlAtomFamily,
   EMPTY_ASSET_URL_ATOM,
-} from "@t3tools/client-runtime/state/assets";
-import type { AssetResource, EnvironmentId } from "@t3tools/contracts";
+} from "@gentic2/client-runtime/state/assets";
+import type { AssetResource, EnvironmentId } from "@gentic2/contracts";
 import * as Option from "effect/Option";
 import { AsyncResult, Atom } from "effect/unstable/reactivity";
 import { useCallback } from "react";

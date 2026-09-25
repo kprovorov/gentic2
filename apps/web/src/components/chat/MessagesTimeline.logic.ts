@@ -1,9 +1,9 @@
-import { worktreeSetupAgentStarted } from "@t3tools/client-runtime/worktree-setup";
-export { worktreeSetupAgentStarted } from "@t3tools/client-runtime/worktree-setup";
+import { worktreeSetupAgentStarted } from "@gentic2/client-runtime/worktree-setup";
+export { worktreeSetupAgentStarted } from "@gentic2/client-runtime/worktree-setup";
 import * as Equal from "effect/Equal";
 import { shallow } from "zustand/vanilla/shallow";
-import { renderCodexDirectivesForCopy } from "@t3tools/client-runtime/codex-markdown-directives";
-import { commandProgramName } from "@t3tools/client-runtime/work-log/command-label";
+import { renderCodexDirectivesForCopy } from "@gentic2/client-runtime/codex-markdown-directives";
+import { commandProgramName } from "@gentic2/client-runtime/work-log/command-label";
 import {
   liveActivityToolStatus,
   normalizeCompactToolLabel,
@@ -13,11 +13,11 @@ import {
   toolGroupAction,
   toolGroupSummaryKind,
   type ToolGroupSummaryKind,
-} from "@t3tools/client-runtime/work-log/presentation";
+} from "@gentic2/client-runtime/work-log/presentation";
 export {
   normalizeCompactToolLabel,
   toolGroupAction,
-} from "@t3tools/client-runtime/work-log/presentation";
+} from "@gentic2/client-runtime/work-log/presentation";
 import {
   formatDuration,
   inferCheckpointTurnCountByTurnId,
@@ -36,7 +36,7 @@ import {
   type OrchestrationLatestTurn,
   type TurnId,
   type WorktreeSetupSnapshot,
-} from "@t3tools/contracts";
+} from "@gentic2/contracts";
 import { formatWorkspaceRelativePath } from "../../filePathDisplay";
 
 const TIMELINE_MINIMAP_ITEM_SPACING = 8;
@@ -367,7 +367,7 @@ export type MessagesTimelineRow =
       summaryKind: ToolGroupSummaryKind;
       toolSurface?: WorkLogEntry["toolSurface"];
       toolIcon?: WorkLogEntry["toolIcon"];
-      summaryToolIcon?: "browser" | "device" | "t3-code" | "pull-request";
+      summaryToolIcon?: "browser" | "device" | "gentic2" | "pull-request";
       hasFailure: boolean;
     }
   | {

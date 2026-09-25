@@ -1,5 +1,5 @@
-import type { EnvironmentThreadShell } from "@t3tools/client-runtime/state/shell";
-import { EnvironmentId, ThreadId } from "@t3tools/contracts";
+import type { EnvironmentThreadShell } from "@gentic2/client-runtime/state/shell";
+import { EnvironmentId, ThreadId } from "@gentic2/contracts";
 import type { Atom } from "effect/unstable/reactivity";
 import { afterEach, describe, expect, it, vi } from "vite-plus/test";
 

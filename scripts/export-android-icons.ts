@@ -39,7 +39,7 @@ const COMPOSER_CANVAS_PT = 1024;
 const SVG_DENSITY = 300;
 const OUTPUT_DIRECTORY = "apps/mobile/assets";
 // Production has no background artwork, so its splash composes onto the adaptive color.
-const PRODUCTION_BACKGROUND_COLOR = "#000000";
+const PRODUCTION_BACKGROUND_COLOR = "#9AE600";
 
 export class AndroidIconRenderError extends Schema.TaggedError<AndroidIconRenderError>()(
   "AndroidIconRenderError",
@@ -103,11 +103,14 @@ const readLayerSource = Effect.fn("androidIcons.readLayerSource")(function* (
   );
 });
 
+// The wordmark colour comes from the variant's own text layer: white on the dev and
+// nightly artwork, dark green on the production lime background.
 const renderForeground = Effect.fn("androidIcons.renderForeground")(function* (
   repositoryRoot: string,
+  variant: IconVariant,
   size: number,
 ) {
-  const text = yield* readLayerSource(repositoryRoot, "prod", "text.svg");
+  const text = yield* readLayerSource(repositoryRoot, variant, "text.svg");
   const paths = text.match(/<path[^>]*\/>/g) ?? [];
   return yield* rasterize(
     "foreground",
@@ -202,7 +205,7 @@ const renderSplashIcon = Effect.fn("androidIcons.renderSplashIcon")(function* (
   variant: IconVariant,
 ) {
   const background = yield* renderBackground(repositoryRoot, variant, SPLASH_CANVAS);
-  const foreground = yield* renderForeground(repositoryRoot, SPLASH_CANVAS);
+  const foreground = yield* renderForeground(repositoryRoot, variant, SPLASH_CANVAS);
   return yield* composite(`${variant}-splash`, background, [{ input: foreground }]);
 });
 
@@ -211,7 +214,14 @@ const exportAndroidIcons = Effect.gen(function* () {
   const path = yield* Path.Path;
   const repositoryRoot = path.resolve(import.meta.dirname, "..");
   const outputs = [
-    ["android-icon-foreground.png", yield* renderForeground(repositoryRoot, ADAPTIVE_CANVAS)],
+    [
+      "android-icon-foreground.png",
+      yield* renderForeground(repositoryRoot, "dev", ADAPTIVE_CANVAS),
+    ],
+    [
+      "android-icon-foreground-prod.png",
+      yield* renderForeground(repositoryRoot, "prod", ADAPTIVE_CANVAS),
+    ],
     [
       "android-icon-background-dev.png",
       yield* renderDevelopmentBackground(repositoryRoot, ADAPTIVE_CANVAS),

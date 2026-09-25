@@ -1,9 +1,9 @@
 import { isElectron } from "~/env";
 import { isMacPlatform, isWindowsPlatform, normalizeSearchText } from "~/lib/utils";
-import { STATIC_KEYBINDING_COMMANDS, type KeybindingCommand } from "@t3tools/contracts";
-import type { EnvironmentId } from "@t3tools/contracts";
-import type { EnvironmentConnectionPhase } from "@t3tools/client-runtime/connection";
-import { DEFAULT_KEYBINDINGS } from "@t3tools/shared/keybindings";
+import { STATIC_KEYBINDING_COMMANDS, type KeybindingCommand } from "@gentic2/contracts";
+import type { EnvironmentId } from "@gentic2/contracts";
+import type { EnvironmentConnectionPhase } from "@gentic2/client-runtime/connection";
+import { DEFAULT_KEYBINDINGS } from "@gentic2/shared/keybindings";
 import { commandLabel } from "./KeybindingsSettings.logic";
 import {
   validateSettingsScopeSearch,
@@ -406,7 +406,7 @@ export const SETTINGS_SEARCH_ITEMS = [
     title: "Submodules",
     to: "/settings/general",
     scope: "project-defaults",
-    searchTerms: ["git submodule init recursive top-level none worktree t3.json"],
+    searchTerms: ["git submodule init recursive top-level none worktree g2.json"],
   },
   {
     id: "start-from-origin",
@@ -709,7 +709,7 @@ export const SETTINGS_SEARCH_ITEMS = [
     id: "project-actions",
     title: "Actions",
     to: "/settings/projects",
-    searchTerms: ["commands scripts setup run dev server checkout worktree t3.json import"],
+    searchTerms: ["commands scripts setup run dev server checkout worktree g2.json import"],
   },
   {
     id: "environment-icon",
@@ -757,9 +757,9 @@ export const SETTINGS_SEARCH_ITEMS = [
     wslAvailableOnly: true,
   },
   {
-    id: "t3-connect",
+    id: "g2-connect",
     localEnvironmentOnly: true,
-    title: "T3 Connect",
+    title: "Gentic2 Connect",
     to: "/settings/connections",
     targetId: "connections-environment",
     searchTerms: ["managed tunnel cloud other devices remote"],
@@ -787,7 +787,7 @@ export const SETTINGS_SEARCH_ITEMS = [
     id: "remote-environments",
     title: "Environments",
     to: "/settings/connections",
-    searchTerms: ["add pair backend host code ssh config agent tunnel saved t3 connect"],
+    searchTerms: ["add pair backend host code ssh config agent tunnel saved g2 connect"],
   },
   {
     id: "load-balancing",

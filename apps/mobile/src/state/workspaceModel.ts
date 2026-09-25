@@ -1,7 +1,7 @@
-import { type EnvironmentShellSummary } from "@t3tools/client-runtime/state/shell";
-import { type NetworkStatus } from "@t3tools/client-runtime/connection";
-import { type EnvironmentConnectionPhase } from "@t3tools/client-runtime/connection";
-import type { EnvironmentId, ServerConfig } from "@t3tools/contracts";
+import { type EnvironmentShellSummary } from "@gentic2/client-runtime/state/shell";
+import { type NetworkStatus } from "@gentic2/client-runtime/connection";
+import { type EnvironmentConnectionPhase } from "@gentic2/client-runtime/connection";
+import type { EnvironmentId, ServerConfig } from "@gentic2/contracts";
 
 import type { EnvironmentPresentation } from "./environments";
 

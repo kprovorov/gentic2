@@ -1,4 +1,4 @@
-import type { VcsStatusRemoteResult, VcsStatusResult } from "@t3tools/contracts";
+import type { VcsStatusRemoteResult, VcsStatusResult } from "@gentic2/contracts";
 import { describe, expect, it } from "vite-plus/test";
 
 import {
@@ -13,23 +13,23 @@ import {
 
 describe("normalizeGitRemoteUrl", () => {
   it("canonicalizes equivalent GitHub remotes across protocol variants", () => {
-    expect(normalizeGitRemoteUrl("git@github.com:T3Tools/T3Code.git")).toBe(
-      "github.com/t3tools/t3code",
+    expect(normalizeGitRemoteUrl("git@github.com:kprovorov/Gentic2.git")).toBe(
+      "github.com/kprovorov/gentic2",
     );
-    expect(normalizeGitRemoteUrl("https://github.com/T3Tools/T3Code.git")).toBe(
-      "github.com/t3tools/t3code",
+    expect(normalizeGitRemoteUrl("https://github.com/kprovorov/gentic2.git")).toBe(
+      "github.com/kprovorov/gentic2",
     );
-    expect(normalizeGitRemoteUrl("ssh://git@github.com/T3Tools/T3Code")).toBe(
-      "github.com/t3tools/t3code",
+    expect(normalizeGitRemoteUrl("ssh://git@github.com/kprovorov/Gentic2")).toBe(
+      "github.com/kprovorov/gentic2",
     );
   });
 
   it("preserves nested group paths for providers like GitLab", () => {
-    expect(normalizeGitRemoteUrl("git@gitlab.com:T3Tools/platform/T3Code.git")).toBe(
-      "gitlab.com/t3tools/platform/t3code",
+    expect(normalizeGitRemoteUrl("git@gitlab.com:kprovorov/platform/Gentic2.git")).toBe(
+      "gitlab.com/kprovorov/platform/gentic2",
     );
-    expect(normalizeGitRemoteUrl("https://gitlab.com/T3Tools/platform/T3Code.git")).toBe(
-      "gitlab.com/t3tools/platform/t3code",
+    expect(normalizeGitRemoteUrl("https://gitlab.com/kprovorov/platform/Gentic2.git")).toBe(
+      "gitlab.com/kprovorov/platform/gentic2",
     );
   });
 
@@ -52,34 +52,34 @@ describe("normalizeGitRemoteUrl", () => {
   });
 
   it("gives an Azure DevOps repository the same key over SSH as over HTTPS", () => {
-    expect(normalizeGitRemoteUrl("git@ssh.dev.azure.com:v3/T3Tools/Platform/T3Code")).toBe(
-      "dev.azure.com/t3tools/platform/_git/t3code",
-    );
-    expect(normalizeGitRemoteUrl("ssh://git@ssh.dev.azure.com:22/v3/T3Tools/Platform/T3Code")).toBe(
-      "dev.azure.com/t3tools/platform/_git/t3code",
+    expect(normalizeGitRemoteUrl("git@ssh.dev.azure.com:v3/kprovorov/Platform/Gentic2")).toBe(
+      "dev.azure.com/kprovorov/platform/_git/gentic2",
     );
     expect(
-      normalizeGitRemoteUrl("https://T3Tools@dev.azure.com/T3Tools/Platform/_git/T3Code"),
-    ).toBe("dev.azure.com/t3tools/platform/_git/t3code");
+      normalizeGitRemoteUrl("ssh://git@ssh.dev.azure.com:22/v3/kprovorov/Platform/Gentic2"),
+    ).toBe("dev.azure.com/kprovorov/platform/_git/gentic2");
+    expect(
+      normalizeGitRemoteUrl("https://kprovorov@dev.azure.com/kprovorov/Platform/_git/Gentic2"),
+    ).toBe("dev.azure.com/kprovorov/platform/_git/gentic2");
   });
 
   it("puts the organization back in the host on the name dev.azure.com replaced", () => {
     expect(
-      normalizeGitRemoteUrl("T3Tools@vs-ssh.visualstudio.com:v3/T3Tools/Platform/T3Code"),
-    ).toBe("t3tools.visualstudio.com/platform/_git/t3code");
-    expect(normalizeGitRemoteUrl("https://T3Tools.visualstudio.com/Platform/_git/T3Code")).toBe(
-      "t3tools.visualstudio.com/platform/_git/t3code",
+      normalizeGitRemoteUrl("kprovorov@vs-ssh.visualstudio.com:v3/kprovorov/Platform/Gentic2"),
+    ).toBe("kprovorov.visualstudio.com/platform/_git/gentic2");
+    expect(normalizeGitRemoteUrl("https://kprovorov.visualstudio.com/Platform/_git/Gentic2")).toBe(
+      "kprovorov.visualstudio.com/platform/_git/gentic2",
     );
   });
 
   it("leaves an Azure SSH host it cannot read as the path it was given", () => {
     // Not `v3`, and not four segments: rewriting either would invent a repository that the web
     // spelling has no name for, so the remote stands as it arrived.
-    expect(normalizeGitRemoteUrl("git@ssh.dev.azure.com:v4/T3Tools/Platform/T3Code")).toBe(
-      "ssh.dev.azure.com/v4/t3tools/platform/t3code",
+    expect(normalizeGitRemoteUrl("git@ssh.dev.azure.com:v4/kprovorov/Platform/Gentic2")).toBe(
+      "ssh.dev.azure.com/v4/kprovorov/platform/gentic2",
     );
-    expect(normalizeGitRemoteUrl("git@ssh.dev.azure.com:v3/T3Tools/T3Code")).toBe(
-      "ssh.dev.azure.com/v3/t3tools/t3code",
+    expect(normalizeGitRemoteUrl("git@ssh.dev.azure.com:v3/kprovorov/Gentic2")).toBe(
+      "ssh.dev.azure.com/v3/kprovorov/gentic2",
     );
   });
 });
@@ -92,12 +92,12 @@ describe("parseOriginUrlFromGitConfig", () => {
       '[remote "upstream"]',
       "\turl = https://github.com/other/repo.git",
       '[remote "origin"]',
-      "\turl = git@github.com:pingdotgg/t3code.git",
+      "\turl = git@github.com:kprovorov/gentic2.git",
       "\tfetch = +refs/heads/*:refs/remotes/origin/*",
       '[branch "main"]',
       "\tremote = origin",
     ].join("\n");
-    expect(parseOriginUrlFromGitConfig(config)).toBe("git@github.com:pingdotgg/t3code.git");
+    expect(parseOriginUrlFromGitConfig(config)).toBe("git@github.com:kprovorov/gentic2.git");
   });
 
   it("strips inline comments and quotes from the url value", () => {
@@ -153,14 +153,14 @@ describe("parseOriginUrlFromGitConfig", () => {
 describe("parseGitHubRepositoryNameWithOwnerFromRemoteUrl", () => {
   it("extracts the owner and repository from common GitHub remote shapes", () => {
     expect(
-      parseGitHubRepositoryNameWithOwnerFromRemoteUrl("git@github.com:T3Tools/T3Code.git"),
-    ).toBe("T3Tools/T3Code");
+      parseGitHubRepositoryNameWithOwnerFromRemoteUrl("git@github.com:kprovorov/Gentic2.git"),
+    ).toBe("kprovorov/Gentic2");
     expect(
-      parseGitHubRepositoryNameWithOwnerFromRemoteUrl("https://github.com/T3Tools/T3Code.git"),
-    ).toBe("T3Tools/T3Code");
+      parseGitHubRepositoryNameWithOwnerFromRemoteUrl("https://github.com/kprovorov/Gentic2.git"),
+    ).toBe("kprovorov/Gentic2");
     expect(
-      parseGitHubRepositoryNameWithOwnerFromRemoteUrl("ssh://github.com/T3Tools/T3Code.git"),
-    ).toBe("T3Tools/T3Code");
+      parseGitHubRepositoryNameWithOwnerFromRemoteUrl("ssh://github.com/kprovorov/Gentic2.git"),
+    ).toBe("kprovorov/Gentic2");
   });
 });
 

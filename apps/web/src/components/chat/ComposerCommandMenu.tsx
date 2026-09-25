@@ -2,14 +2,14 @@ import {
   formatProviderSkillDisplayName,
   resolveProviderSkillSourceKind,
   type ProviderSkillSourceKind,
-} from "@t3tools/client-runtime/providerSkills";
+} from "@gentic2/client-runtime/providerSkills";
 import {
   type ProjectEntry,
   type ProviderDriverKind,
   type PullRequestContextMetadata,
   type ServerProviderSkill,
   type ServerProviderSlashCommand,
-} from "@t3tools/contracts";
+} from "@gentic2/contracts";
 import {
   BlocksIcon,
   FolderIcon,

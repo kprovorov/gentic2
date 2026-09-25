@@ -1,0 +1,6 @@
+{
+  "platforms": ["android"],
+  "android": {
+    "modules": ["expo.modules.g2markdowntext.G2MarkdownTextSelectionModule"]
+  }
+}

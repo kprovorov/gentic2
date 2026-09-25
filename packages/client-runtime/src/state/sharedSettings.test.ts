@@ -4,7 +4,7 @@ import {
   ProjectId,
   ProviderDriverKind,
   ProviderInstanceId,
-} from "@t3tools/contracts";
+} from "@gentic2/contracts";
 import { describe, expect, it } from "@effect/vitest";
 
 import {

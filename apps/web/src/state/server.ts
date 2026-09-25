@@ -7,10 +7,10 @@ import {
   type ServerLifecycleWelcomePayload,
   type ServerProvider,
   type ServerSettings,
-} from "@t3tools/contracts";
-import { createServerEnvironmentAtoms } from "@t3tools/client-runtime/state/server";
-import { createEnvironmentServerConfigsAtom } from "@t3tools/client-runtime/state/shell";
-import { mergeWithDefaultKeybindings } from "@t3tools/shared/keybindings";
+} from "@gentic2/contracts";
+import { createServerEnvironmentAtoms } from "@gentic2/client-runtime/state/server";
+import { createEnvironmentServerConfigsAtom } from "@gentic2/client-runtime/state/shell";
+import { mergeWithDefaultKeybindings } from "@gentic2/shared/keybindings";
 import * as Option from "effect/Option";
 import { AsyncResult, Atom } from "effect/unstable/reactivity";
 

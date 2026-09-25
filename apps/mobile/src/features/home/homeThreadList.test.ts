@@ -1,8 +1,8 @@
 import type {
   EnvironmentProject,
   EnvironmentThreadShell,
-} from "@t3tools/client-runtime/state/shell";
-import { EnvironmentId, ProjectId, ProviderInstanceId, ThreadId } from "@t3tools/contracts";
+} from "@gentic2/client-runtime/state/shell";
+import { EnvironmentId, ProjectId, ProviderInstanceId, ThreadId } from "@gentic2/contracts";
 import { describe, expect, it } from "vite-plus/test";
 
 import { buildHomeProjectScopes, sortHomeProjectScopes } from "./homeThreadList";
@@ -52,24 +52,24 @@ describe("home project scopes", () => {
     const localEnvironmentId = EnvironmentId.make("environment-local");
     const remoteEnvironmentId = EnvironmentId.make("environment-remote");
     const repositoryIdentity = {
-      canonicalKey: "github.com/pingdotgg/t3code",
+      canonicalKey: "github.com/kprovorov/gentic2",
       locator: {
         source: "git-remote" as const,
         remoteName: "origin",
-        remoteUrl: "git@github.com:pingdotgg/t3code.git",
+        remoteUrl: "git@github.com:kprovorov/gentic2.git",
       },
     };
     const projects = [
       makeProject({
         environmentId: localEnvironmentId,
         id: ProjectId.make("project-local"),
-        title: "t3code",
+        title: "gentic2",
         repositoryIdentity,
       }),
       makeProject({
         environmentId: remoteEnvironmentId,
         id: ProjectId.make("project-remote"),
-        title: "t3code",
+        title: "gentic2",
         repositoryIdentity,
       }),
     ];
@@ -81,7 +81,7 @@ describe("home project scopes", () => {
     });
 
     expect(scopes).toHaveLength(1);
-    expect(scopes[0]?.title).toBe("t3code");
+    expect(scopes[0]?.title).toBe("gentic2");
     expect(scopes[0]?.projects).toEqual(projects);
     expect(scopes[0]?.projectRefs).toEqual(
       projects.map((project) => ({
@@ -95,33 +95,33 @@ describe("home project scopes", () => {
     const localEnvironmentId = EnvironmentId.make("environment-local");
     const remoteEnvironmentId = EnvironmentId.make("environment-remote");
     const repositoryIdentity = {
-      canonicalKey: "github.com/pingdotgg/t3code",
+      canonicalKey: "github.com/kprovorov/gentic2",
       locator: {
         source: "git-remote" as const,
         remoteName: "origin",
-        remoteUrl: "git@github.com:pingdotgg/t3code.git",
+        remoteUrl: "git@github.com:kprovorov/gentic2.git",
       },
     };
     const projects = [
       makeProject({
         environmentId: localEnvironmentId,
         id: ProjectId.make("project-local"),
-        title: "t3code",
+        title: "gentic2",
         repositoryIdentity,
       }),
       makeProject({
         environmentId: remoteEnvironmentId,
         id: ProjectId.make("project-remote-with-identity"),
-        title: "t3code",
-        workspaceRoot: "/remote/t3code",
+        title: "gentic2",
+        workspaceRoot: "/remote/gentic2",
         repositoryIdentity,
         updatedAt: "2026-06-01T00:00:00.000Z",
       }),
       makeProject({
         environmentId: remoteEnvironmentId,
         id: ProjectId.make("project-remote-fresh"),
-        title: "t3code",
-        workspaceRoot: "/remote/t3code/",
+        title: "gentic2",
+        workspaceRoot: "/remote/gentic2/",
         updatedAt: "2026-06-02T00:00:00.000Z",
       }),
     ];
@@ -217,24 +217,24 @@ describe("home project scopes", () => {
     const localEnvironmentId = EnvironmentId.make("environment-local");
     const remoteEnvironmentId = EnvironmentId.make("environment-remote");
     const repositoryIdentity = {
-      canonicalKey: "github.com/pingdotgg/t3code",
+      canonicalKey: "github.com/kprovorov/gentic2",
       locator: {
         source: "git-remote" as const,
         remoteName: "origin",
-        remoteUrl: "git@github.com:pingdotgg/t3code.git",
+        remoteUrl: "git@github.com:kprovorov/gentic2.git",
       },
     };
     const olderMember = makeProject({
       environmentId: localEnvironmentId,
       id: ProjectId.make("project-older-member"),
-      title: "t3code",
+      title: "gentic2",
       updatedAt: "2026-06-01T00:00:00.000Z",
       repositoryIdentity,
     });
     const newerMember = makeProject({
       environmentId: remoteEnvironmentId,
       id: ProjectId.make("project-newer-member"),
-      title: "t3code",
+      title: "gentic2",
       updatedAt: "2026-06-03T00:00:00.000Z",
       repositoryIdentity,
     });

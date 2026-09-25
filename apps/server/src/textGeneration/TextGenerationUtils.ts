@@ -1,4 +1,4 @@
-import { TextGenerationError } from "@t3tools/contracts";
+import { TextGenerationError } from "@gentic2/contracts";
 import * as Option from "effect/Option";
 import * as Schema from "effect/Schema";
 

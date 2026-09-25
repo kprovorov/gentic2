@@ -1,4 +1,4 @@
-import { WS_METHODS } from "@t3tools/contracts";
+import { WS_METHODS } from "@gentic2/contracts";
 import { Atom } from "effect/unstable/reactivity";
 
 import {

@@ -1,7 +1,7 @@
 import {
-  SelectableMarkdownText as T3SelectableMarkdownText,
+  SelectableMarkdownText as G2SelectableMarkdownText,
   type SelectableMarkdownTextProps,
-} from "@t3tools/mobile-markdown-text/renderer";
+} from "@gentic2/mobile-markdown-text/renderer";
 
 import { highlightCodeSnippet } from "../features/review/shikiReviewHighlighter";
 
@@ -14,12 +14,12 @@ export type {
   MarkdownImageRequest,
   NativeMarkdownTextStyle,
   SelectableMarkdownSkill,
-} from "@t3tools/mobile-markdown-text/types";
+} from "@gentic2/mobile-markdown-text/types";
 
 export function hasNativeSelectableMarkdownText(): boolean {
   return true;
 }
 
 export function SelectableMarkdownText(props: MobileSelectableMarkdownTextProps) {
-  return <T3SelectableMarkdownText {...props} highlightCode={highlightCodeSnippet} />;
+  return <G2SelectableMarkdownText {...props} highlightCode={highlightCodeSnippet} />;
 }

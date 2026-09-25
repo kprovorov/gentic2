@@ -1,11 +1,11 @@
-import { MAX_SCRIPT_ID_LENGTH } from "@t3tools/contracts";
+import { MAX_SCRIPT_ID_LENGTH } from "@gentic2/contracts";
 import { shortcutLabelForCommand } from "./keybindings";
 import { describe, expect, it } from "vite-plus/test";
 import {
   projectScriptCwd,
   projectScriptRuntimeEnv,
   setupProjectScript,
-} from "@t3tools/shared/projectScripts";
+} from "@gentic2/shared/projectScripts";
 
 import {
   buildProjectScript,
@@ -137,8 +137,8 @@ describe("projectScripts helpers", () => {
     });
 
     expect(env).toMatchObject({
-      T3CODE_PROJECT_ROOT: "/repo",
-      T3CODE_WORKTREE_PATH: "/repo/worktree-a",
+      GENTIC2_PROJECT_ROOT: "/repo",
+      GENTIC2_WORKTREE_PATH: "/repo/worktree-a",
     });
   });
 
@@ -146,14 +146,14 @@ describe("projectScripts helpers", () => {
     const env = projectScriptRuntimeEnv({
       project: { cwd: "/repo" },
       extraEnv: {
-        T3CODE_PROJECT_ROOT: "/custom-root",
+        GENTIC2_PROJECT_ROOT: "/custom-root",
         CUSTOM_FLAG: "1",
       },
     });
 
-    expect(env.T3CODE_PROJECT_ROOT).toBe("/custom-root");
+    expect(env.GENTIC2_PROJECT_ROOT).toBe("/custom-root");
     expect(env.CUSTOM_FLAG).toBe("1");
-    expect(env.T3CODE_WORKTREE_PATH).toBeUndefined();
+    expect(env.GENTIC2_WORKTREE_PATH).toBeUndefined();
   });
 
   it("prefers the worktree path for script cwd resolution", () => {

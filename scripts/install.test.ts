@@ -1,5 +1,5 @@
 // @effect-diagnostics nodeBuiltinImport:off - Drives the real shell installer through a PTY and a gated HTTP fixture.
-import { HostProcessArchitecture, HostProcessPlatform } from "@t3tools/shared/hostProcess";
+import { HostProcessArchitecture, HostProcessPlatform } from "@gentic2/shared/hostProcess";
 import * as NodeChildProcess from "node:child_process";
 import * as NodeCrypto from "node:crypto";
 import * as NodeFSP from "node:fs/promises";
@@ -13,15 +13,15 @@ describe.skipIf(HostProcessPlatform.defaultValue() !== "linux")("installer termi
   it.each([false, true])(
     "preserves download and install behavior (HTTP failure: %s)",
     async (fail) => {
-      const root = await NodeFSP.mkdtemp(NodePath.join(NodeOS.tmpdir(), "t3-install-progress-"));
+      const root = await NodeFSP.mkdtemp(NodePath.join(NodeOS.tmpdir(), "g2-install-progress-"));
       const version = "1.2.3";
-      const stem = `t3-${version}-linux-${HostProcessArchitecture.defaultValue()}`;
+      const stem = `g2-${version}-linux-${HostProcessArchitecture.defaultValue()}`;
       const archiveName = `${stem}.tar.gz`;
       let resumeDownload: (() => void) | undefined;
       let sawPartialProgress = false;
       let output = "";
       await NodeFSP.mkdir(NodePath.join(root, stem));
-      await NodeFSP.writeFile(NodePath.join(root, stem, "t3"), "#!/bin/sh\necho 't3 v1.2.3'\n", {
+      await NodeFSP.writeFile(NodePath.join(root, stem, "g2"), "#!/bin/sh\necho 'g2 v1.2.3'\n", {
         mode: 0o755,
       });
       await NodeFSP.writeFile(
@@ -60,10 +60,10 @@ describe.skipIf(HostProcessPlatform.defaultValue() !== "linux")("installer termi
           ...process.env,
           TERM: "xterm",
           NO_COLOR: "1",
-          T3CODE_VERSION: version,
-          T3CODE_HOME: NodePath.join(root, "home"),
-          T3CODE_INSTALL_BIN_DIR: NodePath.join(root, "bin"),
-          T3CODE_RELEASE_BASE_URL: `http://127.0.0.1:${address.port}`,
+          GENTIC2_VERSION: version,
+          GENTIC2_HOME: NodePath.join(root, "home"),
+          GENTIC2_INSTALL_BIN_DIR: NodePath.join(root, "bin"),
+          GENTIC2_RELEASE_BASE_URL: `http://127.0.0.1:${address.port}`,
         },
         stdio: ["ignore", "pipe", "pipe"],
       });
@@ -86,22 +86,22 @@ describe.skipIf(HostProcessPlatform.defaultValue() !== "linux")("installer termi
           expect(code).not.toBe(0);
           expect(output).toContain("500");
           expect(output).not.toContain("100%");
-          expect(output).not.toContain("Installed T3 Code");
+          expect(output).not.toContain("Installed Gentic2");
           expect(await NodeFSP.readdir(versions)).toEqual([]);
         } else {
           expect(code).toBe(0);
           expect(sawPartialProgress).toBe(true);
           expect(output).toContain("100%");
           expect(output).toContain("0.1 / 0.1 MB");
-          expect(output).toContain("Installed T3 Code 1.2.3");
+          expect(output).toContain("Installed Gentic2 1.2.3");
           expect(
             await NodeFSP.readFile(NodePath.join(versions, version, ".install-complete"), "utf8"),
           ).toBe("1.2.3\n");
           expect(
-            NodeChildProcess.execFileSync(NodePath.join(root, "bin/t3"), ["--version"], {
+            NodeChildProcess.execFileSync(NodePath.join(root, "bin/g2"), ["--version"], {
               encoding: "utf8",
             }).trim(),
-          ).toBe("t3 v1.2.3");
+          ).toBe("g2 v1.2.3");
           expect(await NodeFSP.readdir(versions)).toEqual([version]);
         }
       } finally {

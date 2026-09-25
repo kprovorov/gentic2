@@ -1,4 +1,4 @@
-import { imageMimeType } from "@t3tools/shared/image";
+import { imageMimeType } from "@gentic2/shared/image";
 import type {
   ChatFileAttachment as ContractChatFileAttachment,
   ChatImageAttachment as ContractChatImageAttachment,
@@ -11,15 +11,15 @@ import type {
   ProjectScript as ContractProjectScript,
   ProviderInteractionMode,
   RuntimeMode,
-} from "@t3tools/contracts";
+} from "@gentic2/contracts";
 import type {
   EnvironmentProject,
   EnvironmentThread,
   EnvironmentThreadShell,
-} from "@t3tools/client-runtime/state/shell";
-import { videoMimeType } from "@t3tools/shared/video";
+} from "@gentic2/client-runtime/state/shell";
+import { videoMimeType } from "@gentic2/shared/video";
 
-export { videoMimeType } from "@t3tools/shared/video";
+export { videoMimeType } from "@gentic2/shared/video";
 
 export type SessionPhase = "disconnected" | "connecting" | "ready" | "running";
 export const DEFAULT_RUNTIME_MODE: RuntimeMode = "full-access";

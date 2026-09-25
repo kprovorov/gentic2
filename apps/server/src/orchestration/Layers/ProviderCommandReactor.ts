@@ -12,10 +12,10 @@ import {
   type ProviderSession,
   type RuntimeMode,
   type TurnId,
-} from "@t3tools/contracts";
-import { assistantCitationsToPlainText } from "@t3tools/shared/assistantCitations";
-import { projectComposerContextForProvider } from "@t3tools/shared/composerContextReferences";
-import { isTemporaryWorktreeBranch, WORKTREE_BRANCH_PREFIX } from "@t3tools/shared/git";
+} from "@gentic2/contracts";
+import { assistantCitationsToPlainText } from "@gentic2/shared/assistantCitations";
+import { projectComposerContextForProvider } from "@gentic2/shared/composerContextReferences";
+import { isTemporaryWorktreeBranch, WORKTREE_BRANCH_PREFIX } from "@gentic2/shared/git";
 import * as Cache from "effect/Cache";
 import * as Cause from "effect/Cause";
 import * as Crypto from "effect/Crypto";
@@ -31,7 +31,7 @@ import * as Path from "effect/Path";
 import * as Schedule from "effect/Schedule";
 import * as Schema from "effect/Schema";
 import * as Stream from "effect/Stream";
-import { makeDrainableWorker } from "@t3tools/shared/DrainableWorker";
+import { makeDrainableWorker } from "@gentic2/shared/DrainableWorker";
 
 import { resolveThreadWorkspaceCwd } from "../../checkpointing/Utils.ts";
 import { increment, orchestrationEventsProcessedTotal } from "../../observability/Metrics.ts";
@@ -62,7 +62,7 @@ import {
   resolveSourceControlWriterModelSelection,
   ServerSettingsService,
 } from "../../serverSettings.ts";
-import { resolveProjectSettings } from "@t3tools/shared/projectSettings";
+import { resolveProjectSettings } from "@gentic2/shared/projectSettings";
 import { VcsStatusBroadcaster } from "../../vcs/VcsStatusBroadcaster.ts";
 import { GitWorkflowService } from "../../git/GitWorkflowService.ts";
 const isProviderAdapterProcessError = Schema.is(ProviderAdapterProcessError);
@@ -502,7 +502,7 @@ const make = Effect.gen(function* () {
     // A directory deleted without `git worktree remove` leaves an admin entry
     // that makes `git worktree add` refuse the path; prune clears it.
     // Best effort like the rest of this recovery: a settings read failure
-    // falls back to the checkout's t3.json.
+    // falls back to the checkout's g2.json.
     const submodules = yield* projectSettingsForThread(thread.id).pipe(
       Effect.map((settings) => settings.worktreeSubmodules),
       Effect.orElseSucceed(() => null),

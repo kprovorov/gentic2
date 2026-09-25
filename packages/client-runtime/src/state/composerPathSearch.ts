@@ -1,4 +1,4 @@
-import type { EnvironmentId } from "@t3tools/contracts";
+import type { EnvironmentId } from "@gentic2/contracts";
 
 export interface ComposerPathSearchEntry {
   readonly path: string;

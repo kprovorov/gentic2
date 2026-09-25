@@ -1,5 +1,5 @@
-import { mediaKindFromPath } from "@t3tools/shared/filePreview";
-import { mediaUrlReference } from "@t3tools/client-runtime/media-reference";
+import { mediaKindFromPath } from "@gentic2/shared/filePreview";
+import { mediaUrlReference } from "@gentic2/client-runtime/media-reference";
 import type { ExpandedImageItem, ExpandedImagePreview } from "./ExpandedImagePreview";
 import { resolveExternalWebLinkHost } from "./externalLinkContextMenu";
 import { resolveProtocolRelativeMediaUrl } from "../media/mediaContent";

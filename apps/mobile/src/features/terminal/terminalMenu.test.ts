@@ -3,10 +3,10 @@ import { describe, expect, it } from "vite-plus/test";
 import {
   EMPTY_TERMINAL_BUFFER_STATE,
   type KnownTerminalSession,
-} from "@t3tools/client-runtime/state/terminal";
-import { DEFAULT_TERMINAL_ID, EnvironmentId, ThreadId } from "@t3tools/contracts";
+} from "@gentic2/client-runtime/state/terminal";
+import { DEFAULT_TERMINAL_ID, EnvironmentId, ThreadId } from "@gentic2/contracts";
 
-import { getTerminalLabel } from "@t3tools/shared/terminalLabels";
+import { getTerminalLabel } from "@gentic2/shared/terminalLabels";
 
 import {
   buildTerminalMenuSessions,

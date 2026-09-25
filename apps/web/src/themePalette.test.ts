@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vite-plus/test";
-import { BUILT_IN_THEMES } from "@t3tools/shared/themePalettes";
+import { BUILT_IN_THEMES } from "@gentic2/shared/themePalettes";
 
 import {
   applyThemeColorPreview,
@@ -1012,12 +1012,12 @@ describe("stored theme preferences", () => {
     expect(isKnownThemePreference("t3-chat-dark")).toBe(true);
   });
 
-  it("resolves legacy t3-prefixed ids onto the renamed themes", () => {
+  it("resolves legacy g2-prefixed ids onto the renamed themes", () => {
     for (const [legacy, theme] of [
-      ["t3-grove", GROVE_THEME],
-      ["t3-ocean", OCEAN_THEME],
-      ["t3-ember", EMBER_THEME],
-      ["t3-iris", IRIS_THEME],
+      ["g2-grove", GROVE_THEME],
+      ["g2-ocean", OCEAN_THEME],
+      ["g2-ember", EMBER_THEME],
+      ["g2-iris", IRIS_THEME],
     ] as const) {
       expect(getThemeDefinition(legacy)).toBe(theme);
       expect(isKnownThemePreference(legacy)).toBe(true);
@@ -1026,7 +1026,7 @@ describe("stored theme preferences", () => {
     // The dark-variant alias keeps its raw form: it still carries a mode hint.
     expect(canonicalThemePreference("t3-chat-dark")).toBe("t3-chat-dark");
     // A stored mix that predates the rename resolves to the new ids.
-    expect(parseThemeHalves(JSON.stringify({ light: "t3-ocean", dark: "t3-grove" }))).toEqual({
+    expect(parseThemeHalves(JSON.stringify({ light: "g2-ocean", dark: "g2-grove" }))).toEqual({
       light: OCEAN_THEME.id,
       dark: GROVE_THEME.id,
     });

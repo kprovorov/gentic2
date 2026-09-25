@@ -25,14 +25,14 @@ import type {
   ResourceTelemetrySourceHealth,
   ResourceTelemetrySourceStatus,
   ServerProcessSignal,
-} from "@t3tools/contracts";
+} from "@gentic2/contracts";
 import * as DateTime from "effect/DateTime";
 import * as Option from "effect/Option";
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import {
   isAtomCommandInterrupted,
   squashAtomCommandFailure,
-} from "@t3tools/client-runtime/state/runtime";
+} from "@gentic2/client-runtime/state/runtime";
 
 import {
   useResourceTelemetry,
@@ -136,8 +136,8 @@ function categoryLabel(category: ResourceTelemetryProcessCategory): string {
       return "Electron utility";
     case "resource-monitor":
       return "Monitor";
-    case "unknown-t3":
-      return "T3 process";
+    case "unknown-g2":
+      return "G2 process";
   }
 }
 
@@ -844,7 +844,7 @@ export function ResourceTelemetryDiagnostics({
   }, [environmentId]);
   const [isRetrying, setIsRetrying] = useState(false);
   const snapshot = telemetry.data;
-  const allT3 = snapshot?.groups.allT3;
+  const allG2 = snapshot?.groups.allG2;
 
   const signalProcess = useCallback(
     async (process: ResourceTelemetryProcess, signal: ServerProcessSignal) => {
@@ -987,7 +987,7 @@ export function ResourceTelemetryDiagnostics({
           <div className="flex flex-col gap-3 border-b border-border/60 bg-linear-to-r from-muted/45 via-muted/20 to-transparent px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
             <div>
               <div className="text-3xs font-semibold uppercase tracking-widest text-muted-foreground/70">
-                T3 system footprint
+                G2 system footprint
               </div>
               <p className="mt-1 max-w-xl text-xs leading-relaxed text-muted-foreground">
                 Live native counters for the server, providers, terminals, desktop processes, and
@@ -1003,40 +1003,40 @@ export function ResourceTelemetryDiagnostics({
             <IconStat
               icon={<CpuIcon className="size-3.5" />}
               label="Current CPU"
-              value={allT3 ? `${allT3.currentCpuPercent.toFixed(1)}%` : "..."}
-              detail={allT3 ? `${formatCpuTime(allT3.cpuTimeMs)} observed CPU time` : undefined}
+              value={allG2 ? `${allG2.currentCpuPercent.toFixed(1)}%` : "..."}
+              detail={allG2 ? `${formatCpuTime(allG2.cpuTimeMs)} observed CPU time` : undefined}
             />
             <IconStat
               icon={<MemoryStickIcon className="size-3.5" />}
               label="Resident memory"
-              value={allT3 ? formatBytes(allT3.currentRssBytes) : "..."}
+              value={allG2 ? formatBytes(allG2.currentRssBytes) : "..."}
               detail={
-                allT3 ? `${formatBytes(allT3.peakRssBytes)} combined process peaks` : undefined
+                allG2 ? `${formatBytes(allG2.peakRssBytes)} combined process peaks` : undefined
               }
             />
             <IconStat
               icon={<ActivityIcon className="size-3.5" />}
               label="Process count"
-              value={allT3 ? String(allT3.processCount) : "..."}
+              value={allG2 ? String(allG2.processCount) : "..."}
               detail={
-                allT3 ? `${allT3.processStarts} starts · ${allT3.processExits} exits` : undefined
+                allG2 ? `${allG2.processStarts} starts · ${allG2.processExits} exits` : undefined
               }
             />
             <IconStat
               icon={<HardDriveIcon className="size-3.5" />}
               label="Read throughput"
-              value={allT3 ? formatRate(allT3.ioReadBytesPerSecond) : "..."}
-              detail={allT3 ? `${formatBytes(allT3.ioReadBytes)} observed` : undefined}
+              value={allG2 ? formatRate(allG2.ioReadBytesPerSecond) : "..."}
+              detail={allG2 ? `${formatBytes(allG2.ioReadBytes)} observed` : undefined}
             />
             <IconStat
               icon={<DatabaseIcon className="size-3.5" />}
               label="Write throughput"
-              value={allT3 ? formatRate(allT3.ioWriteBytesPerSecond) : "..."}
-              detail={allT3 ? `${formatBytes(allT3.ioWriteBytes)} observed` : undefined}
+              value={allG2 ? formatRate(allG2.ioWriteBytesPerSecond) : "..."}
+              detail={allG2 ? `${formatBytes(allG2.ioWriteBytes)} observed` : undefined}
               tone={
-                allT3 && allT3.ioWriteBytesPerSecond >= 10 * 1_024 * 1_024
+                allG2 && allG2.ioWriteBytesPerSecond >= 10 * 1_024 * 1_024
                   ? "danger"
-                  : allT3 && allT3.ioWriteBytesPerSecond >= 1_024 * 1_024
+                  : allG2 && allG2.ioWriteBytesPerSecond >= 1_024 * 1_024
                     ? "warning"
                     : "default"
               }
@@ -1270,7 +1270,7 @@ export function ResourceTelemetryDiagnostics({
         <div className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-xs/5">
           <div className="bg-muted/15 px-4 py-3 text-2xs leading-relaxed text-muted-foreground sm:px-5">
             Native counters identify which process is reading or writing. These application-level
-            counters identify known T3 operations so process spikes can be correlated with specific
+            counters identify known G2 operations so process spikes can be correlated with specific
             persistence and logging paths.
           </div>
           <AttributionTable entries={snapshot?.attribution.entries ?? []} />

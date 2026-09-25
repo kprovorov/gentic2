@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vite-plus/test";
-import { EnvironmentId } from "@t3tools/contracts";
+import { EnvironmentId } from "@gentic2/contracts";
 
 import type { ComposerFileAttachment } from "../../composerDraftStore";
 import {
@@ -16,8 +16,8 @@ describe("resolveMarkdownMediaPreview", () => {
   });
 
   it.each([
-    ["t3code:", "https:"],
-    ["t3code-dev:", "https:"],
+    ["gentic2:", "https:"],
+    ["gentic2-dev:", "https:"],
     ["http:", "http:"],
     ["https:", "https:"],
   ])(

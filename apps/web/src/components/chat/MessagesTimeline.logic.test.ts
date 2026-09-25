@@ -11,12 +11,12 @@ import {
   TurnId,
   type OrchestrationThread,
   type WorktreeSetupSnapshot,
-} from "@t3tools/contracts";
+} from "@gentic2/contracts";
 import {
   applyThreadDetailEvent,
   createEnvironmentThreadDetailAtoms,
   EMPTY_ENVIRONMENT_THREAD_STATE,
-} from "@t3tools/client-runtime/state/threads";
+} from "@gentic2/client-runtime/state/threads";
 import * as Option from "effect/Option";
 import { AsyncResult, Atom, AtomRegistry } from "effect/unstable/reactivity";
 import {
@@ -273,7 +273,7 @@ describe("streaming row projection", () => {
         checkpointLookupReads += 1;
         return 1;
       },
-      checkpointRef: CheckpointRef.make("refs/t3/checkpoints/history-turn"),
+      checkpointRef: CheckpointRef.make("refs/g2/checkpoints/history-turn"),
       status: "ready",
       files: [],
       get assistantMessageId() {
@@ -370,7 +370,7 @@ describe("streaming row projection", () => {
           checkpointLookupReads += 1;
           return index + 1;
         },
-        checkpointRef: CheckpointRef.make(`refs/t3/checkpoints/older-${index}`),
+        checkpointRef: CheckpointRef.make(`refs/g2/checkpoints/older-${index}`),
         status: "ready",
         files: [],
         get assistantMessageId() {
@@ -700,7 +700,7 @@ describe("work entry labels", () => {
   ] as const)("uses the same friendly %s label in both views", (toolLifecycleStatus, label) => {
     const browserEntry = {
       ...entry,
-      toolTitle: "T3-code.preview_click",
+      toolTitle: "Gentic2.preview_click",
       detail: '{"ok":true}',
       toolLifecycleStatus,
     };
@@ -711,7 +711,7 @@ describe("work entry labels", () => {
   });
 
   it("uses the active summary state for legacy tools without a lifecycle status", () => {
-    const browserEntry = { ...entry, toolTitle: "T3-code.preview_click" };
+    const browserEntry = { ...entry, toolTitle: "Gentic2.preview_click" };
     expect(liveWorkEntryLabel(browserEntry, undefined, true)).toBe(
       "Clicking in the preview browser",
     );
@@ -723,7 +723,7 @@ describe("work entry labels", () => {
   it("keeps the latest live activity in the present tense after the call completes", () => {
     const browserEntry = {
       ...entry,
-      toolTitle: "T3-code.preview_click",
+      toolTitle: "Gentic2.preview_click",
       toolLifecycleStatus: "completed" as const,
     };
     expect(liveWorkEntryLabel(browserEntry, undefined, true)).toBe(
@@ -791,7 +791,7 @@ describe("work entry labels", () => {
             entry: {
               ...entry,
               itemType: "mcp_tool_call",
-              toolData: { server: "t3-code", tool },
+              toolData: { server: "gentic2", tool },
             },
           },
         ],
@@ -3535,7 +3535,7 @@ describe("deriveMessagesTimelineRows", () => {
           toolCallId: `call-${index}`,
           createdAt,
           turnId,
-          label: "t3-code.preview_snapshot",
+          label: "gentic2.preview_snapshot",
           tone: "tool" as const,
           toolLifecycleStatus:
             isWorking && index === 999 ? ("inProgress" as const) : ("completed" as const),

@@ -60,11 +60,11 @@ describe("relayOwnsManagedEndpointZone", () => {
 
 describe("relayResourceNameForStage", () => {
   it("isolates production and personal stages", () => {
-    expect(relayResourceNameForStage("t3-code-relay-traces", "prod")).toBe(
-      "t3-code-relay-traces-prod",
+    expect(relayResourceNameForStage("gentic2-relay-traces", "prod")).toBe(
+      "gentic2-relay-traces-prod",
     );
-    expect(relayResourceNameForStage("t3-code-relay-traces", "dev_julius")).toBe(
-      "t3-code-relay-traces-dev-julius",
+    expect(relayResourceNameForStage("gentic2-relay-traces", "dev_julius")).toBe(
+      "gentic2-relay-traces-dev-julius",
     );
   });
 });
@@ -79,14 +79,14 @@ describe("managed endpoint names", () => {
     expect(managedEndpointHostname("dev_julius", ".example.com.", hash)).toBe(
       "dev-julius-abcdef0123456789.example.com",
     );
-    expect(managedEndpointHostname("prod", "t3coderelay.com", hash)).toBe(
-      "prod-abcdef0123456789.t3coderelay.com",
+    expect(managedEndpointHostname("prod", "gentic2relay.com", hash)).toBe(
+      "prod-abcdef0123456789.gentic2relay.com",
     );
     expect(managedEndpointTunnelName("dev_julius", hash)).toBe(
-      "t3coderelay-managedendpoint-dev-julius-abcdef0123456789",
+      "gentic2relay-managedendpoint-dev-julius-abcdef0123456789",
     );
     expect(managedEndpointTunnelNamePrefix("dev_julius")).toBe(
-      "t3coderelay-managedendpoint-dev-julius-",
+      "gentic2relay-managedendpoint-dev-julius-",
     );
   });
 

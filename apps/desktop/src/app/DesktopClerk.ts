@@ -7,14 +7,14 @@ import * as Option from "effect/Option";
 import * as Schema from "effect/Schema";
 import * as Scope from "effect/Scope";
 
-import { clerkFrontendApiHostnameFromPublishableKey } from "@t3tools/shared/relayAuth";
+import { clerkFrontendApiHostnameFromPublishableKey } from "@gentic2/shared/relayAuth";
 import * as ElectronApp from "../electron/ElectronApp.ts";
 import * as ElectronProtocol from "../electron/ElectronProtocol.ts";
 import * as ElectronWindow from "../electron/ElectronWindow.ts";
 import * as DesktopAppIdentity from "./DesktopAppIdentity.ts";
 import * as DesktopEnvironment from "./DesktopEnvironment.ts";
 
-declare const __T3CODE_BUILD_CLERK_PUBLISHABLE_KEY__: string | undefined;
+declare const __GENTIC2_BUILD_CLERK_PUBLISHABLE_KEY__: string | undefined;
 
 export class DesktopClerkBridgeInitializationError extends Schema.TaggedError<DesktopClerkBridgeInitializationError>()(
   "DesktopClerkBridgeInitializationError",
@@ -51,7 +51,7 @@ export class DesktopClerk extends Context.Service<
       ElectronApp.ElectronApp | ElectronWindow.ElectronWindow | Scope.Scope
     >;
   }
->()("@t3tools/desktop/app/DesktopClerk") {}
+>()("@gentic2/desktop/app/DesktopClerk") {}
 
 function resolveDesktopClerkFrontendApiHostname(
   publishableKey: string | undefined,
@@ -67,9 +67,9 @@ function resolveDesktopClerkFrontendApiHostname(
 }
 
 export const desktopClerkFrontendApiHostname = resolveDesktopClerkFrontendApiHostname(
-  typeof __T3CODE_BUILD_CLERK_PUBLISHABLE_KEY__ === "undefined"
+  typeof __GENTIC2_BUILD_CLERK_PUBLISHABLE_KEY__ === "undefined"
     ? undefined
-    : __T3CODE_BUILD_CLERK_PUBLISHABLE_KEY__,
+    : __GENTIC2_BUILD_CLERK_PUBLISHABLE_KEY__,
 );
 
 function createDesktopClerkBridge(stateDir: string, isDevelopment: boolean) {
@@ -92,7 +92,7 @@ export const make = Effect.gen(function* () {
   // creates that directory when the lock is acquired. The SDK bridge takes
   // the lock at creation, so userData must already point at the real
   // directory here — under the default productName-derived path, acquiring
-  // the lock would create "T3 Code (Alpha)" and make the legacy-install
+  // the lock would create "Gentic2 (Alpha)" and make the legacy-install
   // detection in resolveUserDataPath match on fresh installs.
   const userDataPath = yield* DesktopAppIdentity.resolveUserDataPath;
   yield* electronApp.setPath("userData", userDataPath);

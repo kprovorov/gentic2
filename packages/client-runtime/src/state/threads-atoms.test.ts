@@ -9,7 +9,7 @@ import {
   type OrchestrationThread,
   type OrchestrationThreadDetailSnapshot,
   type OrchestrationThreadStreamItem,
-} from "@t3tools/contracts";
+} from "@gentic2/contracts";
 import { afterEach, describe, expect, it, vi } from "@effect/vitest";
 import * as Cause from "effect/Cause";
 import * as Clock from "effect/Clock";

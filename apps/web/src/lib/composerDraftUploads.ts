@@ -1,5 +1,5 @@
-import type { ScopedProjectRef, ScopedThreadRef } from "@t3tools/contracts";
-import { scopedThreadKey } from "@t3tools/client-runtime/environment";
+import type { ScopedProjectRef, ScopedThreadRef } from "@gentic2/contracts";
+import { scopedThreadKey } from "@gentic2/client-runtime/environment";
 
 import { type DraftId, useComposerDraftStore } from "../composerDraftStore";
 import { releaseDraftAttachments } from "./attachmentUploadQueue";

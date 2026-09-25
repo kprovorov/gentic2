@@ -4,8 +4,8 @@ import {
   ProviderInstanceId,
   type ServerProvider,
   type ServerProviderUpdateState,
-} from "@t3tools/contracts";
-import { ServerProviderUpdateError } from "@t3tools/contracts";
+} from "@gentic2/contracts";
+import { ServerProviderUpdateError } from "@gentic2/contracts";
 import * as Cause from "effect/Cause";
 import * as Effect from "effect/Effect";
 import * as Exit from "effect/Exit";
@@ -17,8 +17,8 @@ import * as Sink from "effect/Sink";
 import * as Stream from "effect/Stream";
 import { HttpClient, HttpClientResponse } from "effect/unstable/http";
 import { ChildProcessSpawner } from "effect/unstable/process";
-import { HostProcessEnvironment, HostProcessPlatform } from "@t3tools/shared/hostProcess";
-import { SpawnExecutableResolution } from "@t3tools/shared/shell";
+import { HostProcessEnvironment, HostProcessPlatform } from "@gentic2/shared/hostProcess";
+import { SpawnExecutableResolution } from "@gentic2/shared/shell";
 
 import { ProviderRegistry, type ProviderRegistryShape } from "./Services/ProviderRegistry.ts";
 import * as ModelManifest from "./ModelManifest.ts";
@@ -216,7 +216,7 @@ const makeTestRunner = (
   manifest: ModelManifest.ModelManifestData = {
     version: 1,
     currentModels: {},
-    compatibility: [{ driver: CODEX_DRIVER, t3CodeRange: ">=0.0.42", ranges: [] }],
+    compatibility: [{ driver: CODEX_DRIVER, g2CodeRange: ">=0.0.42", ranges: [] }],
   },
 ) =>
   Effect.service(ProviderMaintenanceRunner.ProviderMaintenanceRunner).pipe(
@@ -936,7 +936,7 @@ it.effect("refuses incompatible latest versions and unapproved or unpinnable tar
     compatibility: [
       {
         driver: "codex",
-        t3CodeRange: ">=0.0.42",
+        g2CodeRange: ">=0.0.42",
         recommendedVersion: "2.0.0",
         ranges: [
           { range: "=2.0.0", status: "supported" },

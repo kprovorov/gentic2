@@ -3,7 +3,7 @@ import type {
   OrchestrationShellSnapshot,
   OrchestrationThreadShell,
   ThreadId,
-} from "@t3tools/contracts";
+} from "@gentic2/contracts";
 import * as DateTime from "effect/DateTime";
 import { Atom } from "effect/unstable/reactivity";
 

@@ -1,15 +1,15 @@
-import { ComposerContextId } from "@t3tools/contracts";
-import type { ComposerContextClipboardFragment } from "@t3tools/contracts";
+import { ComposerContextId } from "@gentic2/contracts";
+import type { ComposerContextClipboardFragment } from "@gentic2/contracts";
 import {
   COMPOSER_CONTEXT_CLIPBOARD_MIME,
   decodeComposerContextFragment,
   decodeComposerContextClipboardHtml,
-} from "@t3tools/shared/composerContextClipboard";
+} from "@gentic2/shared/composerContextClipboard";
 import {
   collectComposerContextReferences,
   formatComposerContextReference,
   replaceComposerContextReferences,
-} from "@t3tools/shared/composerContextReferences";
+} from "@gentic2/shared/composerContextReferences";
 /** Clipboard records referenced by the copied text, including dependent screenshots. */
 export function readPastedComposerContext(
   clipboardData: Pick<DataTransfer, "getData">,

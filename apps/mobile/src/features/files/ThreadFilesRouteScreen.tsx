@@ -4,14 +4,14 @@ import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react"
 import { Platform, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Svg, { Defs, LinearGradient, Rect, Stop } from "react-native-svg";
-import { EnvironmentId, type ProjectReadFileResult, ThreadId } from "@t3tools/contracts";
-import { videoMimeType } from "@t3tools/shared/video";
+import { EnvironmentId, type ProjectReadFileResult, ThreadId } from "@gentic2/contracts";
+import { videoMimeType } from "@gentic2/shared/video";
 import {
   isWorkspaceBrowserPreviewPath,
   isWorkspaceImagePreviewPath,
   mediaMimeTypeFromExtension,
-} from "@t3tools/shared/filePreview";
-import { mediaFileReference } from "@t3tools/client-runtime/media-reference";
+} from "@gentic2/shared/filePreview";
+import { mediaFileReference } from "@gentic2/client-runtime/media-reference";
 
 import { MaterialScreenContent } from "../../components/MaterialScreenContent";
 import { AudioFilePreview } from "../../components/AudioFilePreview";

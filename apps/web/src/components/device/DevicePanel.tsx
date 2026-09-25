@@ -4,7 +4,7 @@ import type {
   DeviceServiceState,
   DeviceSummary,
   ScopedThreadRef,
-} from "@t3tools/contracts";
+} from "@gentic2/contracts";
 import { Smartphone, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 

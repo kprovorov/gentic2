@@ -1,0 +1,4 @@
+interface:
+  display_name: "G2 App Testing"
+  short_description: "Test web and desktop in G2's Browser panel"
+  default_prompt: "Use $test-g2-app to verify the affected web or desktop flow through G2's Browser panel."
