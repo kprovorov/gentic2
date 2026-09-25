@@ -1,14 +1,14 @@
 {
-  "name": "t3",
+  "name": "g2",
   "version": "0.0.42",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pingdotgg/t3code",
+    "url": "https://github.com/kprovorov/gentic2",
     "directory": "apps/server"
   },
   "bin": {
-    "t3": "./dist/bin.mjs"
+    "g2": "./dist/bin.mjs"
   },
   "files": [
     "dist"
@@ -38,11 +38,11 @@
   },
   "devDependencies": {
     "@effect/vitest": "catalog:",
-    "@t3tools/contracts": "workspace:*",
-    "@t3tools/shared": "workspace:*",
-    "@t3tools/ssh": "workspace:*",
-    "@t3tools/tailscale": "workspace:*",
-    "@t3tools/web": "workspace:*",
+    "@gentic2/contracts": "workspace:*",
+    "@gentic2/shared": "workspace:*",
+    "@gentic2/ssh": "workspace:*",
+    "@gentic2/tailscale": "workspace:*",
+    "@gentic2/web": "workspace:*",
     "@types/node": "catalog:",
     "@types/yauzl": "^3.4.0",
     "effect-acp": "workspace:*",

@@ -6,15 +6,15 @@ import type {
   OrchestrationThreadShell,
   ThreadId,
   TurnId,
-} from "@t3tools/contracts";
-import { ProviderInstanceId } from "@t3tools/contracts";
+} from "@gentic2/contracts";
+import { ProviderInstanceId } from "@gentic2/contracts";
 
 import { projectThreadAwareness } from "./agentAwareness.ts";
 
 const NOW = "2026-05-22T12:00:00.000Z";
 
 const project = {
-  title: "t3code",
+  title: "gentic2",
 } satisfies Pick<OrchestrationProjectShell, "title">;
 
 function thread(

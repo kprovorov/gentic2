@@ -14,7 +14,7 @@ import * as NodePath from "node:path";
 
 import * as NodeServices from "@effect/platform-node/NodeServices";
 import { it } from "@effect/vitest";
-import { type ProviderApprovalDecision, type ProviderEvent, ThreadId } from "@t3tools/contracts";
+import { type ProviderApprovalDecision, type ProviderEvent, ThreadId } from "@gentic2/contracts";
 import * as Deferred from "effect/Deferred";
 import * as Effect from "effect/Effect";
 import * as Fiber from "effect/Fiber";
@@ -24,7 +24,7 @@ import { assert, describe } from "vite-plus/test";
 
 import wireFixture from "../testFixtures/codexMultiAgentWire.json" with { type: "json" };
 import { makeCodexSessionRuntime } from "./CodexSessionRuntime.ts";
-import { HostProcessPlatform } from "@t3tools/shared/hostProcess";
+import { HostProcessPlatform } from "@gentic2/shared/hostProcess";
 
 const ROOT = wireFixture.rootThreadId;
 const [CHILD_A, CHILD_B] = wireFixture.childThreadIds as [string, string];
@@ -203,7 +203,7 @@ describe("CodexSessionRuntime collab integration", () => {
         binaryPath: peerPath,
         cwd: NodeOS.tmpdir(),
         runtimeMode: "full-access",
-        environment: { ...process.env, T3_CODEX_COLLAB_SCRIPT: scriptPath },
+        environment: { ...process.env, GENTIC2X_COLLAB_SCRIPT: scriptPath },
       });
       const metadataFiber = yield* runtime.events.pipe(
         Stream.filter(
@@ -295,7 +295,7 @@ describe("CodexSessionRuntime collab integration", () => {
         binaryPath: peerPath,
         cwd: NodeOS.tmpdir(),
         runtimeMode: "full-access",
-        environment: { ...process.env, T3_CODEX_COLLAB_SCRIPT: scriptPath },
+        environment: { ...process.env, GENTIC2X_COLLAB_SCRIPT: scriptPath },
       });
       const eventsFiber = yield* runtime.events.pipe(
         Stream.takeUntil(
@@ -374,7 +374,7 @@ describe("CodexSessionRuntime collab integration", () => {
             binaryPath: peerPath,
             cwd: NodeOS.tmpdir(),
             runtimeMode: "full-access",
-            environment: { ...process.env, T3_CODEX_COLLAB_SCRIPT: scriptPath },
+            environment: { ...process.env, GENTIC2X_COLLAB_SCRIPT: scriptPath },
           });
           const eventsFiber = yield* runtime.events.pipe(
             Stream.takeUntil(
@@ -413,7 +413,7 @@ describe("CodexSessionRuntime collab integration", () => {
         binaryPath: peerPath,
         cwd: NodeOS.tmpdir(),
         runtimeMode: "full-access",
-        environment: { ...process.env, T3_CODEX_COLLAB_SCRIPT: scriptPath },
+        environment: { ...process.env, GENTIC2X_COLLAB_SCRIPT: scriptPath },
       });
 
       const eventsFiber = yield* runtime.events.pipe(
@@ -555,7 +555,7 @@ describe("CodexSessionRuntime collab integration", () => {
         binaryPath: peerPath,
         cwd: NodeOS.tmpdir(),
         runtimeMode: "full-access",
-        environment: { ...process.env, T3_CODEX_COLLAB_SCRIPT: scriptPath },
+        environment: { ...process.env, GENTIC2X_COLLAB_SCRIPT: scriptPath },
       });
 
       // Wait for both children's turnStarted signals to be processed before
@@ -648,7 +648,7 @@ describe("CodexSessionRuntime collab integration", () => {
         binaryPath: peerPath,
         cwd: "/tmp",
         runtimeMode: "full-access",
-        environment: { ...process.env, T3_CODEX_COLLAB_SCRIPT: scriptPath },
+        environment: { ...process.env, GENTIC2X_COLLAB_SCRIPT: scriptPath },
       });
 
       // One consumer for the whole stream: `events` is a plain queue stream,
@@ -735,7 +735,7 @@ describe("CodexSessionRuntime collab integration", () => {
         binaryPath: peerPath,
         cwd: NodeOS.tmpdir(),
         runtimeMode: "full-access",
-        environment: { ...process.env, T3_CODEX_COLLAB_SCRIPT: scriptPath },
+        environment: { ...process.env, GENTIC2X_COLLAB_SCRIPT: scriptPath },
       });
 
       yield* runtime.start();
@@ -832,7 +832,7 @@ describe("CodexSessionRuntime collab integration", () => {
           binaryPath: peerPath,
           cwd: NodeOS.tmpdir(),
           runtimeMode: "auto",
-          environment: { ...process.env, T3_CODEX_COLLAB_SCRIPT: scriptPath },
+          environment: { ...process.env, GENTIC2X_COLLAB_SCRIPT: scriptPath },
         });
         const approvalRequested = yield* Deferred.make<ProviderEvent>();
         const turnCompleted = yield* Deferred.make<void>();
@@ -870,7 +870,7 @@ describe("CodexSessionRuntime collab integration", () => {
 });
 
 describe("CodexSessionRuntime compaction", () => {
-  it.effect("restores T3 context after the root thread compacts", () =>
+  it.effect("restores G2 context after the root thread compacts", () =>
     Effect.gen(function* () {
       const compacted = (threadId: string) => ({
         method: "item/completed",
@@ -902,7 +902,7 @@ describe("CodexSessionRuntime compaction", () => {
         binaryPath: peerPath,
         cwd: NodeOS.tmpdir(),
         runtimeMode: "full-access",
-        environment: { ...process.env, T3_CODEX_COLLAB_SCRIPT: scriptPath },
+        environment: { ...process.env, GENTIC2X_COLLAB_SCRIPT: scriptPath },
         models: Effect.succeed([
           { slug: "gpt-5.6-sol", name: "GPT-5.6 Sol", isCustom: false, capabilities: null },
         ]),
@@ -934,7 +934,7 @@ describe("CodexSessionRuntime compaction", () => {
       assert.lengthOf(texts, 1);
       assert.match(
         texts[0] ?? "",
-        /^<t3_code_runtime><runtime_info>.*as GPT-5\.6 Sol \(model slug: gpt-5\.6-sol\).*<\/t3_code_runtime>$/s,
+        /^<gentic2_runtime><runtime_info>.*as GPT-5\.6 Sol \(model slug: gpt-5\.6-sol\).*<\/gentic2_runtime>$/s,
       );
 
       yield* runtime.close;

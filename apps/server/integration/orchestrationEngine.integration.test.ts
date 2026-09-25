@@ -16,7 +16,7 @@ import {
   ThreadId,
   ModelSelection,
   ProviderInstanceId,
-} from "@t3tools/contracts";
+} from "@gentic2/contracts";
 import { assert, it } from "@effect/vitest";
 import * as Clock from "effect/Clock";
 import * as Effect from "effect/Effect";

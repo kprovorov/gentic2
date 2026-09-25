@@ -1,5 +1,5 @@
 {
-  "name": "@t3tools/shared",
+  "name": "@gentic2/shared",
   "private": true,
   "type": "module",
   "exports": {
@@ -131,9 +131,9 @@
       "types": "./src/projectSettings.ts",
       "import": "./src/projectSettings.ts"
     },
-    "./t3ProjectFile": {
-      "types": "./src/t3ProjectFile.ts",
-      "import": "./src/t3ProjectFile.ts"
+    "./g2ProjectFile": {
+      "types": "./src/g2ProjectFile.ts",
+      "import": "./src/g2ProjectFile.ts"
     },
     "./orchestrationTiming": {
       "types": "./src/orchestrationTiming.ts",
@@ -353,9 +353,9 @@
     "test": "vp test run"
   },
   "dependencies": {
+    "@gentic2/contracts": "workspace:*",
     "@noble/curves": "catalog:",
     "@noble/hashes": "catalog:",
-    "@t3tools/contracts": "workspace:*",
     "effect": "catalog:",
     "jose": "catalog:",
     "yaml": "catalog:"

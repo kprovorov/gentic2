@@ -1,4 +1,4 @@
-import type { PreviewViewportSetting } from "@t3tools/contracts";
+import type { PreviewViewportSetting } from "@gentic2/contracts";
 
 export async function commitViewportAndAspectRatio(
   setting: PreviewViewportSetting,

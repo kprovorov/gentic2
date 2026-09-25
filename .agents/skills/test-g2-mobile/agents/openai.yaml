@@ -1,0 +1,4 @@
+interface:
+  display_name: "Test G2 Mobile"
+  short_description: "Test iOS and Android in G2's Device panel"
+  default_prompt: "Use $test-g2-mobile to verify the affected native mobile flow through G2's Device panel and AgentDevice."

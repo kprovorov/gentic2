@@ -1,4 +1,4 @@
-import type { ServerProcessSignal } from "@t3tools/contracts";
+import type { ServerProcessSignal } from "@gentic2/contracts";
 
 import { InlineButton } from "../ui/button";
 import { Tooltip, TooltipPopup, TooltipTrigger } from "../ui/tooltip";

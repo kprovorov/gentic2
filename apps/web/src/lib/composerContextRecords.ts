@@ -1,7 +1,7 @@
 import {
   COMPOSER_CONTEXT_REVIEW_DIFF_MAX_CHARS,
   COMPOSER_CONTEXT_REVIEW_TEXT_MAX_CHARS,
-} from "@t3tools/contracts";
+} from "@gentic2/contracts";
 import type {
   ComposerContextId,
   ComposerContextRecord,
@@ -16,13 +16,13 @@ import type {
   ReviewCommentContextRecord,
   TerminalContextRecord,
   ThreadId,
-} from "@t3tools/contracts";
-import { upgradeLegacyContextMessage } from "@t3tools/shared/composerContextLegacy";
-import { encodeComposerContextFragment } from "@t3tools/shared/composerContextClipboard";
+} from "@gentic2/contracts";
+import { upgradeLegacyContextMessage } from "@gentic2/shared/composerContextLegacy";
+import { encodeComposerContextFragment } from "@gentic2/shared/composerContextClipboard";
 import {
   collectComposerContextReferences,
   sanitizeComposerContextLabel,
-} from "@t3tools/shared/composerContextReferences";
+} from "@gentic2/shared/composerContextReferences";
 
 import {
   type ComposerContextReference,

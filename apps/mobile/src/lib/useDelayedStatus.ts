@@ -1,4 +1,4 @@
-import { createDelayedStatus, type ShownStatus } from "@t3tools/client-runtime/delayed-status";
+import { createDelayedStatus, type ShownStatus } from "@gentic2/client-runtime/delayed-status";
 import { useEffect, useState } from "react";
 
 /**

@@ -1,6 +1,6 @@
 import { assert, it } from "@effect/vitest";
 
-import { EnvironmentInternalError } from "@t3tools/contracts";
+import { EnvironmentInternalError } from "@gentic2/contracts";
 
 import {
   ProjectLiveServerDeclaredResponseError,

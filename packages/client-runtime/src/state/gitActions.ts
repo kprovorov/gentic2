@@ -2,7 +2,7 @@ import type {
   GitRunStackedActionInput,
   GitStackedAction,
   VcsStatusResult,
-} from "@t3tools/contracts";
+} from "@gentic2/contracts";
 
 export type GitActionIconName = "commit" | "push" | "pr";
 

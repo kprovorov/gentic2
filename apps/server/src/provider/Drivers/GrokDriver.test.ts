@@ -1,7 +1,7 @@
 import * as NodeServices from "@effect/platform-node/NodeServices";
 import { expect, it } from "@effect/vitest";
-import { ProviderInstanceId } from "@t3tools/contracts";
-import { HostProcessPlatform } from "@t3tools/shared/hostProcess";
+import { ProviderInstanceId } from "@gentic2/contracts";
+import { HostProcessPlatform } from "@gentic2/shared/hostProcess";
 import * as Effect from "effect/Effect";
 import * as FileSystem from "effect/FileSystem";
 import * as Layer from "effect/Layer";
@@ -16,7 +16,7 @@ import { NoOpProviderEventLoggers, ProviderEventLoggers } from "../Layers/Provid
 import { GrokDriver } from "./GrokDriver.ts";
 
 const testLayer = ServerConfig.layerTest(process.cwd(), {
-  prefix: "t3-grok-driver-update-",
+  prefix: "g2-grok-driver-update-",
 }).pipe(
   Layer.provideMerge(NodeServices.layer),
   Layer.provideMerge(ServerSettingsService.layerTest()),
@@ -46,7 +46,7 @@ it.layer(testLayer)("GrokDriver", (it) => {
     Effect.gen(function* () {
       const fs = yield* FileSystem.FileSystem;
       const path = yield* Path.Path;
-      const tempDir = yield* fs.makeTempDirectoryScoped({ prefix: "t3-grok-driver-" });
+      const tempDir = yield* fs.makeTempDirectoryScoped({ prefix: "g2-grok-driver-" });
       const grokHome = path.join(tempDir, "Grok Home");
       const binaryPath = path.join(grokHome, "bin", "grok");
       yield* fs.makeDirectory(path.dirname(binaryPath), { recursive: true });
@@ -80,7 +80,7 @@ it.layer(testLayer)("GrokDriver", (it) => {
     Effect.gen(function* () {
       const fs = yield* FileSystem.FileSystem;
       const path = yield* Path.Path;
-      const tempDir = yield* fs.makeTempDirectoryScoped({ prefix: "t3-grok-missing-" });
+      const tempDir = yield* fs.makeTempDirectoryScoped({ prefix: "g2-grok-missing-" });
       const instance = yield* GrokDriver.create({
         instanceId: ProviderInstanceId.make("grok-missing"),
         displayName: "Grok test",

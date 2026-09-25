@@ -1,7 +1,7 @@
-import { Connection } from "@t3tools/client-runtime/connection";
-import { shellSnapshotLoaderLayer } from "@t3tools/client-runtime/state/shell";
-import { threadSnapshotLoaderLayer } from "@t3tools/client-runtime/state/threads";
-import { pullRequestDiffLoaderLayer } from "@t3tools/client-runtime/state/pull-requests";
+import { Connection } from "@gentic2/client-runtime/connection";
+import { shellSnapshotLoaderLayer } from "@gentic2/client-runtime/state/shell";
+import { threadSnapshotLoaderLayer } from "@gentic2/client-runtime/state/threads";
+import { pullRequestDiffLoaderLayer } from "@gentic2/client-runtime/state/pull-requests";
 import * as Layer from "effect/Layer";
 import { Atom } from "effect/unstable/reactivity";
 

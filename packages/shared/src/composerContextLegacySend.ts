@@ -1,4 +1,4 @@
-import type { ComposerContextRecord, ElementContextDetails } from "@t3tools/contracts";
+import type { ComposerContextRecord, ElementContextDetails } from "@gentic2/contracts";
 
 import { collectComposerContextReferences } from "./composerContextReferences.ts";
 

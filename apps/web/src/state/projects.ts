@@ -1,7 +1,7 @@
-import { createEnvironmentProjectAtoms } from "@t3tools/client-runtime/state/projects";
-import { createProjectEnvironmentAtoms } from "@t3tools/client-runtime/state/projects";
-import { createEnvironmentRpcQueryAtomFamily } from "@t3tools/client-runtime/state/runtime";
-import { WS_METHODS } from "@t3tools/contracts";
+import { createEnvironmentProjectAtoms } from "@gentic2/client-runtime/state/projects";
+import { createProjectEnvironmentAtoms } from "@gentic2/client-runtime/state/projects";
+import { createEnvironmentRpcQueryAtomFamily } from "@gentic2/client-runtime/state/runtime";
+import { WS_METHODS } from "@gentic2/contracts";
 
 import { environmentCatalog } from "../connection/catalog";
 import { connectionAtomRuntime } from "../connection/runtime";

@@ -1,0 +1,10 @@
+{
+  "platforms": ["apple", "android"],
+  "apple": {
+    "modules": ["G2TerminalModule"],
+    "podspecPath": "G2TerminalNative.podspec"
+  },
+  "android": {
+    "modules": ["expo.modules.g2terminal.G2TerminalModule"]
+  }
+}

@@ -17,9 +17,9 @@ import {
   type ServerProviderModel,
   ThreadId,
   TurnId,
-} from "@t3tools/contracts";
-import { resolveSpawnCommand } from "@t3tools/shared/shell";
-import { normalizeModelSlug } from "@t3tools/shared/model";
+} from "@gentic2/contracts";
+import { resolveSpawnCommand } from "@gentic2/shared/shell";
+import { normalizeModelSlug } from "@gentic2/shared/model";
 import * as Crypto from "effect/Crypto";
 import * as DateTime from "effect/DateTime";
 import * as Deferred from "effect/Deferred";
@@ -43,7 +43,7 @@ import { expandHomePath } from "../../pathExpansion.ts";
 import {
   buildCodexAdditionalContext,
   buildCodexDeveloperInstructions,
-  type T3CodeToolAvailability,
+  type Gentic2ToolAvailability,
 } from "../CodexDeveloperInstructions.ts";
 const decodeV2TurnStartResponse = Schema.decodeUnknownEffect(EffectCodexSchema.V2TurnStartResponse);
 
@@ -74,7 +74,7 @@ export function hasConfiguredMcpServer(appServerArgs: ReadonlyArray<string> | un
 function configuredMcpToolAvailability(
   appServerArgs: ReadonlyArray<string> | undefined,
   mcpCapabilities: ReadonlySet<string> | undefined,
-): T3CodeToolAvailability {
+): Gentic2ToolAvailability {
   if (!hasConfiguredMcpServer(appServerArgs)) return { browser: false, device: false };
   // Callers predating the capability set attached the browser toolkit only.
   if (mcpCapabilities === undefined) return { browser: true, device: false };
@@ -185,7 +185,7 @@ export interface CodexSessionRuntimeOptions {
   readonly appServerArgs?: ReadonlyArray<string>;
   /** The provider's model list; supplies the display name for runtime info. */
   readonly models?: Effect.Effect<ReadonlyArray<ServerProviderModel>>;
-  /** Capabilities the session's `t3-code` MCP credential grants; drives the prompt blocks. */
+  /** Capabilities the session's `gentic2` MCP credential grants; drives the prompt blocks. */
   readonly mcpCapabilities?: ReadonlySet<string>;
 }
 
@@ -428,7 +428,7 @@ export function describeMcpElicitation(
   };
 }
 
-/** Converts a T3 approval decision into the MCP elicitation wire response. */
+/** Converts a G2 approval decision into the MCP elicitation wire response. */
 export function toMcpElicitationResponse(
   payload: EffectCodexSchema.McpServerElicitationRequestParams,
   decision: ProviderApprovalDecision,
@@ -591,7 +591,7 @@ function buildCodexTurnInstructions(input: {
   readonly model?: string;
   readonly modelName?: string;
   readonly effort?: EffectCodexSchema.V2TurnStartParams__ReasoningEffort;
-  readonly browserToolsAvailable?: boolean | T3CodeToolAvailability;
+  readonly browserToolsAvailable?: boolean | Gentic2ToolAvailability;
 }): Pick<CodexTurnStartParamsWithCollaborationMode, "collaborationMode" | "additionalContext"> {
   if (input.interactionMode === undefined) {
     return {};
@@ -633,7 +633,7 @@ export function buildTurnStartParams(input: {
   readonly effort?: EffectCodexSchema.V2TurnStartParams__ReasoningEffort;
   readonly interactionMode?: ProviderInteractionMode;
   /** Defaults to true so callers that predate the agent-access gate are unchanged. */
-  readonly browserToolsAvailable?: boolean | T3CodeToolAvailability;
+  readonly browserToolsAvailable?: boolean | Gentic2ToolAvailability;
 }): Effect.Effect<
   CodexTurnStartParamsWithCollaborationMode,
   CodexErrors.CodexAppServerProtocolParseError
@@ -1875,7 +1875,7 @@ export const makeCodexSessionRuntime = (
     /**
      * Compaction rebuilds history from user messages and Codex's own context,
      * which drops our `additionalContext` messages. Codex only resends an
-     * entry when its value changes, so without this the T3 context would stay
+     * entry when its value changes, so without this the G2 context would stay
      * lost until the model or effort changed. Awaited so the context is back
      * before later notifications from the same turn are handled. Drop this if
      * Codex enables its `retain_client_developer_messages` feature by default.

@@ -1,0 +1,17 @@
+{
+  "name": "@gentic2/mobile-terminal-native",
+  "version": "0.0.0",
+  "private": true,
+  "expo-module": {
+    "ios": {
+      "modules": [
+        "G2TerminalModule"
+      ]
+    },
+    "android": {
+      "modules": [
+        "expo.modules.g2terminal.G2TerminalModule"
+      ]
+    }
+  }
+}

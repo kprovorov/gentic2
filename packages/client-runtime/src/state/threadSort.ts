@@ -1,5 +1,5 @@
-import type { OrchestrationThreadShell, ProjectId } from "@t3tools/contracts";
-import type { SidebarProjectSortOrder, SidebarThreadSortOrder } from "@t3tools/contracts/settings";
+import type { OrchestrationThreadShell, ProjectId } from "@gentic2/contracts";
+import type { SidebarProjectSortOrder, SidebarThreadSortOrder } from "@gentic2/contracts/settings";
 
 export interface ThreadSortInput {
   readonly createdAt: string;

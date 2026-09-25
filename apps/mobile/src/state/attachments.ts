@@ -1,4 +1,4 @@
-import { createAttachmentEnvironmentAtoms } from "@t3tools/client-runtime/state/attachments";
+import { createAttachmentEnvironmentAtoms } from "@gentic2/client-runtime/state/attachments";
 
 import { connectionAtomRuntime } from "../connection/runtime";
 

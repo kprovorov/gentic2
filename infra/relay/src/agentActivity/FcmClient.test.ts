@@ -50,8 +50,8 @@ const config = {
 } satisfies RelayConfiguration["Service"];
 const input = {
   token: "device-token",
-  packageName: "com.t3tools.t3code.dev",
-  data: { t3_kind: "agent_activity", active: "true" },
+  packageName: "com.gentic2.gentic2.dev",
+  data: { g2_kind: "agent_activity", active: "true" },
   alert: false,
 };
 
@@ -191,7 +191,7 @@ describe("FCM delivery", () => {
             android: {
               priority: "HIGH",
               ttl: "300s",
-              collapse_key: "t3-agent-activity",
+              collapse_key: "g2-agent-activity",
               restricted_package_name: input.packageName,
             },
           },

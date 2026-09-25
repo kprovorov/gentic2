@@ -1,10 +1,10 @@
-import type { AssistantCitation } from "@t3tools/contracts";
-import { collectAssistantCitations } from "@t3tools/shared/assistantCitations";
-import { collectComposerContextReferences } from "@t3tools/shared/composerContextReferences";
+import type { AssistantCitation } from "@gentic2/contracts";
+import { collectAssistantCitations } from "@gentic2/shared/assistantCitations";
+import { collectComposerContextReferences } from "@gentic2/shared/composerContextReferences";
 import {
   collectComposerInlineTokens,
   type ComposerInlineToken,
-} from "@t3tools/shared/composerInlineTokens";
+} from "@gentic2/shared/composerInlineTokens";
 
 export type ComposerPromptSegment =
   | {

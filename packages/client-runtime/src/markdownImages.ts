@@ -1,4 +1,4 @@
-import { isWindowsAbsolutePath } from "@t3tools/shared/path";
+import { isWindowsAbsolutePath } from "@gentic2/shared/path";
 
 import {
   normalizeMarkdownLinkDestination,

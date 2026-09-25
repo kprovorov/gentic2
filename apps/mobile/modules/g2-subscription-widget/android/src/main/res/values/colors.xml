@@ -1,0 +1,5 @@
+<resources>
+  <color name="g2_widget_background">#FAFAFA</color>
+  <color name="g2_widget_foreground">#18181B</color>
+  <color name="g2_widget_secondary">#52525B</color>
+</resources>
