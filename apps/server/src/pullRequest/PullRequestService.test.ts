@@ -1188,7 +1188,7 @@ it.effect("reads a repository once when several worktrees share it", () =>
           id: "p2",
           title: "gentic2 worktree",
           workspaceRoot: "/b",
-          repository: "PingDotGG/Gentic2",
+          repository: "KProvorov/Gentic2",
         }),
       ],
       providers: [
