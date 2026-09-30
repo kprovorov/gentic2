@@ -171,7 +171,7 @@ describe("filterProjectScopes", () => {
   });
 
   it("matches logical names and workspace names or paths without case sensitivity", () => {
-    expect(filterProjectScopes(scopes, "  G2 CODE ")).toEqual([code]);
+    expect(filterProjectScopes(scopes, "  GENTIC2 ")).toEqual([code]);
     expect(filterProjectScopes(scopes, "DESKTOP")).toEqual([code]);
     expect(filterProjectScopes(scopes, "REMOTE-WORKSPACE")).toEqual([code]);
     expect(filterProjectScopes(scopes, "documentation")).toEqual([docs]);

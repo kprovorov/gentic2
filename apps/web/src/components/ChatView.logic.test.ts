@@ -330,7 +330,7 @@ describe("proactive panels", () => {
       id: "pull-request:previous",
       kind: "pull-request",
       projectId: previous.projectId,
-      repository: "PingDotGG/Gentic2",
+      repository: "KProvorov/Gentic2",
       number: previous.number,
     } satisfies RightPanelSurface;
 

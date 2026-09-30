@@ -304,13 +304,13 @@ it.layer(NodeServices.layer)("build-desktop-artifact", (it) => {
 
       assert.deepStrictEqual(latestConfig, {
         provider: "github",
-        owner: "pingdotgg",
+        owner: "kprovorov",
         repo: "gentic2",
         releaseType: "release",
       });
       assert.deepStrictEqual(nightlyConfig, {
         provider: "github",
-        owner: "pingdotgg",
+        owner: "kprovorov",
         repo: "gentic2",
         releaseType: "prerelease",
         channel: "nightly",
@@ -354,7 +354,7 @@ it.layer(NodeServices.layer)("build-desktop-artifact", (it) => {
       assert.deepStrictEqual(release.publish, [
         {
           provider: "github",
-          owner: "pingdotgg",
+          owner: "kprovorov",
           repo: "gentic2",
           releaseType: "release",
         },
@@ -1963,7 +1963,7 @@ it.layer(NodeServices.layer)("build-desktop-artifact", (it) => {
 
   it("parses Windows bsdtar member listings with CRLF line endings", () => {
     assert.deepStrictEqual(
-      parseWslRuntimeArchiveMembers("./g2-1.2.3-linux-x64/g2\r\nt3-1.2.3-linux-x64/client/\r\n"),
+      parseWslRuntimeArchiveMembers("./g2-1.2.3-linux-x64/g2\r\ng2-1.2.3-linux-x64/client/\r\n"),
       ["g2-1.2.3-linux-x64/g2", "g2-1.2.3-linux-x64/client"],
     );
   });

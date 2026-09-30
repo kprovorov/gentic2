@@ -880,7 +880,7 @@ it.layer(Layer.fresh(makeProjectionPipelinePrefixedTestLayer("g2-projection-pull
           payload: {
             threadId,
             host: "GitHub.COM",
-            repository: "PingDotGG/Gentic2",
+            repository: "KProvorov/Gentic2",
             number: 42,
             updatedAt: "2026-01-01T00:00:05.000Z",
           },
